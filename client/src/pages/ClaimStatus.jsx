@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { FiArrowLeft, FiX } from "react-icons/fi";
 import DecisionCard from "../components/DecisionCard/DecisionCard";
 import Loader from "../components/shared/Loader";
 import { getClaimById } from "../services/api";
@@ -18,6 +19,7 @@ export default function ClaimStatus() {
   const [decision, setDecision] = useState(location.state?.decision || null);
   const [loading, setLoading] = useState(!decision && !!id);
   const [error, setError] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     // If we already have the decision from navigation state, skip the fetch
@@ -131,12 +133,41 @@ export default function ClaimStatus() {
             </div>
 
             {decision.extracted ? (
-              <div className="cs-grid">
-                <div className="cs-col cs-col--left">
-                  <DecisionCard decision={decision} onResubmit={null} />
-                </div>
-                <div className="cs-col cs-col--right">
-                  <div className="cs-medical">
+              <>
+                {/* Mobile sidebar toggle button */}
+                <button
+                  className="cs-mobile-toggle"
+                  onClick={() => setIsSidebarOpen(true)}
+                  type="button"
+                >
+                  <FiArrowLeft size={16} />
+                  <span>Medical Insights</span>
+                </button>
+
+                {/* Sidebar background overlay */}
+                {isSidebarOpen && (
+                  <div
+                    className="cs-sidebar-overlay"
+                    onClick={() => setIsSidebarOpen(false)}
+                  />
+                )}
+
+                <div className="cs-grid">
+                  <div className="cs-col cs-col--left">
+                    <DecisionCard decision={decision} onResubmit={null} />
+                  </div>
+                  <div className={`cs-col cs-col--right ${isSidebarOpen ? "cs-sidebar--open" : ""}`}>
+                    <div className="cs-sidebar-header">
+                      <span className="cs-sidebar-header__title">Medical Details</span>
+                      <button
+                        className="cs-sidebar-close"
+                        onClick={() => setIsSidebarOpen(false)}
+                        type="button"
+                      >
+                        <FiX size={20} />
+                      </button>
+                    </div>
+                    <div className="cs-medical">
                     <h3 className="cs-medical__title">Medical & Extraction Insights</h3>
                     <p className="cs-medical__subtitle">
                       Clinical data extracted from submitted documents.
@@ -259,11 +290,12 @@ export default function ClaimStatus() {
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="cs-single-col">
-                <DecisionCard decision={decision} onResubmit={null} />
-              </div>
-            )}
+            </>
+          ) : (
+            <div className="cs-single-col">
+              <DecisionCard decision={decision} onResubmit={null} />
+            </div>
+          )}
 
             <div className="cs-actions-bar">
               
