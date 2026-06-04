@@ -1,0 +1,47 @@
+.conf-bar {
+  width: 100%;
+}
+
+.conf-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.conf-bar__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.conf-bar__pct {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.conf-bar__track {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.conf-bar__fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.conf-bar__fill--high { background: #16a34a; }
+.conf-bar__fill--mid  { background: #d97706; }
+.conf-bar__fill--low  { background: #dc2626; }
+
+.conf-bar__hint {
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 5px 0 0 0;
+}

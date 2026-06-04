@@ -1,0 +1,349 @@
+/* ─── All Claims — synced with Home.css ────────────────────────────────────── */
+
+.all-root {
+    --primary: #7e57c2;
+    --primary-dark: #5e35b1;
+    --primary-light: #ede7f6;
+    --red: #dc2626;
+    --green: #16a34a;
+    --amber: #d97706;
+    --magenta: #a21caf;
+    --bg: #f3f4f6;
+    --white: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ─── Navbar ───────────────────────────────────────────────────────────────── */
+.all-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.all-nav__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    
+}
+
+.all-nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.all-nav__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.all-nav__btn--primary {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.all-nav__btn--primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(126, 87, 194, 0.35);
+}
+
+.all-nav__btn--outline {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+}
+
+.all-nav__btn--outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.all-nav__back {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s;
+}
+
+.all-nav__back:hover {
+    color: var(--primary);
+}
+
+/* ─── Content ──────────────────────────────────────────────────────────────── */
+.all-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.all-heading {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 28px 0;
+}
+
+/* ─── Filter bar ───────────────────────────────────────────────────────────── */
+.all-filter {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 28px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 0 16px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.all-filter:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.1);
+}
+
+.all-filter__icon {
+    font-size: 16px;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.all-filter__input {
+    flex: 1;
+    height: 44px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+}
+
+.all-filter__input::placeholder {
+    color: var(--muted);
+}
+
+.all-filter__clear {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.15s;
+}
+
+.all-filter__clear:hover {
+    color: var(--red);
+}
+
+/* ─── Empty state ──────────────────────────────────────────────────────────── */
+.all-empty {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.all-empty__icon {
+    font-size: 48px;
+    display: block;
+    margin: 0 auto 16px;
+    color: var(--muted);
+}
+
+.all-empty__msg {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* ─── Error ────────────────────────────────────────────────────────────────── */
+.all-error {
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+.all-error p {
+    font-size: 14px;
+    color: #b91c1c;
+    margin: 0 0 16px 0;
+}
+
+.all-retry {
+    height: 40px;
+    padding: 0 20px;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+.all-retry:hover {
+    background: #b91c1c;
+}
+
+/* ─── Claims list ──────────────────────────────────────────────────────────── */
+.all-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.all-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+
+.all-item:hover {
+    box-shadow: 0 6px 24px rgba(126, 87, 194, 0.12);
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+/* Left side — ID + member name */
+.all-item__left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.all-item__id {
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.all-item__member {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Right side — amount + status badge */
+.all-item__right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.all-item__amount {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.all-item__date {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+/* ─── Status badges ────────────────────────────────────────────────────────── */
+.all-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.all-badge--approved {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.all-badge--rejected {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.all-badge--partial {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.all-badge--manual {
+    background: #fae8ff;
+    color: #a21caf;
+}
+
+.all-badge--pending {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .all-nav {
+        padding: 12px 16px;
+    }
+
+    .all-inner {
+        padding: 24px 16px 60px;
+    }
+
+    .all-heading {
+        font-size: 22px;
+    }
+
+    .all-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .all-item__right {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

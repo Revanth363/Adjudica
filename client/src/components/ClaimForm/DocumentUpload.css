@@ -1,0 +1,145 @@
+.docupload__zone {
+  border: 2px dashed #d1d5db;
+  border-radius: 14px;
+  padding: 40px 24px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafafa;
+  transition: border-color 0.18s, background 0.18s;
+  outline: none;
+}
+
+.docupload__zone:hover,
+.docupload__zone:focus {
+  border-color: #7e57c2;
+  background: #f5f3ff;
+}
+
+.docupload__zone--dragging {
+  border-color: #7e57c2;
+  background: #ede7f6;
+  transform: scale(1.01);
+}
+
+.docupload__input {
+  display: none;
+}
+
+.docupload__icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.docupload__primary {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+
+.docupload__secondary {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 10px 0;
+}
+
+.docupload__link {
+  color: #7e57c2;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.docupload__hint {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ─── Errors ───────────────────────────────────────────────────────────────── */
+.docupload__errors {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.docupload__errors li {
+  font-size: 13px;
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* ─── File list ────────────────────────────────────────────────────────────── */
+.docupload__list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.docupload__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.docupload__item-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.docupload__item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.docupload__item-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.docupload__item-size {
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 2px 0 0 0;
+}
+
+.docupload__item-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+
+.docupload__item-remove:hover {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+.docupload__count {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: right;
+  margin: 8px 0 0 0;
+}

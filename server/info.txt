@@ -1,0 +1,123 @@
+n AI-powered OPD insurance claim adjudication system.
+ A company (like Plum) plugs this into their workflow.
+  Claims staff (or employees) upload medical documents → 
+  your system reads them with Gemini Vision → extracts structured data → 
+  your rule engine checks it against policy terms → 
+  outputs APPROVED / REJECTED / PARTIAL / MANUAL_REVIEW with reasons and confidence score.
+
+
+
+  plum-opd-adjudication/
+│
+├── client/                          # Vite + React frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   │   ├── ClaimForm/
+│   │   │   │   ├── ClaimForm.jsx        # Main upload + submission form
+│   │   │   │   └── DocumentUpload.jsx   # Drag-drop file uploader
+│   │   │   ├── DecisionCard/
+│   │   │   │   ├── DecisionCard.jsx     # Shows APPROVED/REJECTED with reasons
+│   │   │   │   └── EvidencePanel.jsx    # Shows which rule/policy caused decision
+│   │   │   ├── ManualReviewQueue/
+│   │   │   │   └── ReviewQueue.jsx      # Table of claims flagged for human review
+│   │   │   └── shared/
+│   │   │       ├── Badge.jsx            # Status badges (APPROVED=green, etc.)
+│   │   │       ├── ConfidenceBar.jsx    # Visual confidence meter
+│   │   │       └── Loader.jsx
+│   │   ├── pages/
+│   │   │   ├── Home.jsx                 # Landing / submit claim
+│   │   │   ├── ClaimStatus.jsx          # View decision for a claim ID
+│   │   │   └── ManualReview.jsx         # Admin: manual review queue
+│   │   ├── services/
+│   │   │   └── api.js                   # Axios calls to Express backend
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── .env
+│   ├── index.html
+│   └── vite.config.js
+│
+├── server/                          # Express backend
+│   ├── controllers/
+│   │   ├── claimController.js       # submitClaim, getClaimById, listClaims
+│   │   └── reviewController.js      # manualReview, updateDecision
+│   │
+│   ├── routes/
+│   │   ├── claimRoutes.js           # POST /claims, GET /claims/:id
+│   │   └── reviewRoutes.js          # GET /review/queue, PATCH /review/:id
+│   │
+│   ├── models/
+│   │   └── Claim.js                 # Mongoose schema for a claim
+│   │
+│   ├── services/
+│   │   └── geminiService.js         # Gemini Vision API: extract JSON from docs
+│   │
+│   ├── adjudication/
+│   │   ├── index.js                 # Main entry: adjudicateClaim(extractedData)
+│   │   ├── eligibilityCheck.js      # Step 1: policy active, waiting period, member
+│   │   ├── documentValidator.js     # Step 2: doctor reg format, date match, fields
+│   │   ├── coverageChecker.js       # Step 3: covered service, exclusions, pre-auth
+│   │   ├── limitValidator.js        # Step 4: annual/sub/per-claim limits, copay
+│   │   ├── medicalReview.js         # Step 5: diagnosis vs treatment alignment
+│   │   ├── fraudDetector.js         # Fraud flags: duplicates, patterns, alterations
+│   │   └── decisionBuilder.js       # Assembles final JSON decision output
+│   │
+│   ├── middleware/
+│   │   ├── upload.js                # Multer config (PDF + images, Cloudinary)
+│   │   └── errorHandler.js
+│   │
+│   ├── config/
+│   │   └── policy.js                # Policy terms: limits, exclusions, sub-limits
+│   │
+│   ├── utils/
+│   │   └── validators.js            # Regex for doctor reg no, date format, etc.
+│   │
+│   ├── .env
+│   └── server.js                    # Express app entry point
+│
+├── .gitignore
+└── README.md
+
+
+
+
+The data flow in code terms:
+
+POST /claims (multipart/form-data)
+        ↓
+middleware/upload.js  →  Multer parses files → Cloudinary uploads → returns URLs
+        ↓
+controllers/claimController.js  →  calls geminiService.js
+        ↓
+services/geminiService.js  →  sends file URLs to Gemini Vision → returns structured JSON:
+  {
+    doctor_name, doctor_reg, diagnosis,
+    medicines, tests, bill_items,
+    patient_name, treatment_date, total_amount
+  }
+        ↓
+adjudication/index.js  →  runs all 5 steps in order:
+  eligibilityCheck()    → POLICY_INACTIVE? WAITING_PERIOD?
+  documentValidator()   → MISSING_DOCS? INVALID_REG? DATE_MISMATCH?
+  coverageChecker()     → SERVICE_NOT_COVERED? PRE_AUTH_MISSING?
+  limitValidator()      → PER_CLAIM_EXCEEDED? ANNUAL_LIMIT_EXCEEDED?
+  medicalReview()       → NOT_MEDICALLY_NECESSARY?
+  fraudDetector()       → confidence drops → MANUAL_REVIEW
+        ↓
+decisionBuilder()  →  assembles final:
+  { decision, approved_amount, rejection_reasons, confidence_score, notes, next_steps }
+        ↓
+models/Claim.js  →  saved to MongoDB
+        ↓
+Response sent to frontend
+        ↓
+DecisionCard.jsx renders result
+
+Key things that will make you stand out vs other interns:
+
+adjudication/ as its own folder — most interns dump all logic in one controller. This folder structure mirrors how real insurance tech companies separate business logic from web logic.
+config/policy.js — hardcode the policy terms (limits, exclusions, waiting periods) in one place. The rule engine reads from here. This shows you understand that policies change and you've made it configurable.
+fraudDetector.js — most interns skip this. Even a basic check (same member + same day + >2 claims → flag) will impress.
+EvidencePanel.jsx — show which rule caused the rejection, not just the rejection code. Like "Rejected because: doctor reg KA/12345/2015 format invalid per Step 2 → DOCTOR_REG_INVALID". This mirrors how real claims systems show audit trails.
+Confidence score logic — start at 1.0, deduct for each uncertainty. Gemini unsure about a field → -0.05. Fraud flag → -0.20. Below 0.70 → MANUAL_REVIEW. This is professional-grade.
