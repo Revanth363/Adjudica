@@ -11,7 +11,11 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://adjudica-tan.vercel.app",
+  })
+);
 app.use(express.json());
 
 // ── Routes ─────────────────────────────────────────────────────────────────
