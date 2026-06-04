@@ -1,7 +1,7 @@
 .ep-root {
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 16px;
+  border-radius: 0px;
   padding: 28px;
   margin-top: 20px;
 }
@@ -27,7 +27,7 @@
 }
 
 .ep-step {
-  border-radius: 10px;
+  border-radius: 0px;
   border: 1px solid;
   padding: 14px 16px;
 }
@@ -115,7 +115,7 @@
   background: #fee2e2;
   color: #b91c1c;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 0px;
   font-weight: 700;
 }
 

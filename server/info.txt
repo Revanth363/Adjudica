@@ -27,6 +27,7 @@ n AI-powered OPD insurance claim adjudication system.
 │   │   │       ├── ConfidenceBar.jsx    # Visual confidence meter
 │   │   │       └── Loader.jsx
 │   │   ├── pages/
+|   |   |   |__ AllClaims.jsx
 │   │   │   ├── Home.jsx                 # Landing / submit claim
 │   │   │   ├── ClaimStatus.jsx          # View decision for a claim ID
 │   │   │   └── ManualReview.jsx         # Admin: manual review queue

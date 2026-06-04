@@ -779,7 +779,7 @@
     }
 
     .home-hero__right {
-        display: none;
+        display: flex;
     }
 
     .home-features-grid {

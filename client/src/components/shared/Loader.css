@@ -67,7 +67,7 @@
 
 .loader-fullscreen__box {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 0px;
   padding: 48px 56px;
   text-align: center;
   display: flex;
