@@ -73,6 +73,10 @@ function buildDecision({
     "DUPLICATE_CLAIM",
     "SERVICE_NOT_COVERED",
     "PER_CLAIM_EXCEEDED",
+    "DOCTOR_REG_INVALID",
+"PATIENT_MISMATCH",
+"DATE_MISMATCH",
+"INVALID_PRESCRIPTION",
   ];
 
   const hasHardRejection = allReasons.some((r) => hardRejectionReasons.includes(r));

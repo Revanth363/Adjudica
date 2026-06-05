@@ -73,6 +73,24 @@ function validateDocuments(extracted, claimData) {
     confidence_deduction += 0.05;
   }
 
+  // ── 2D.1: Prescription validity ──────────────────────────────────────────
+const hasMedicines =
+  extracted.medicines &&
+  Array.isArray(extracted.medicines) &&
+  extracted.medicines.length > 0;
+
+const hasTests =
+  extracted.tests &&
+  Array.isArray(extracted.tests) &&
+  extracted.tests.length > 0;
+
+if (hasPrescription && !extracted.diagnosis && !hasMedicines && !hasTests) {
+  addReason("INVALID_PRESCRIPTION");
+  notes.push(
+    "Prescription is present but does not contain diagnosis, medicines, or investigations."
+  );
+}
+
   // ── 2E: Hospital name visibility ─────────────────────────────────────────
   // We do not have hospital registration data in the MVP schema, but a missing
   // hospital name makes network and cashless checks harder to verify.
@@ -141,6 +159,18 @@ function validateDocuments(extracted, claimData) {
       confidence_deduction += 0.05;
     }
   }
+
+  // ── 2J: Date consistency ────────────────────────────────────────────────
+if (
+  extracted.prescription_date &&
+  extracted.bill_date &&
+  extracted.prescription_date !== extracted.bill_date
+) {
+  addReason("DATE_MISMATCH");
+  notes.push(
+    `Prescription date (${extracted.prescription_date}) does not match bill date (${extracted.bill_date}).`
+  );
+}
 
   return {
     passed: reasons.length === 0,
