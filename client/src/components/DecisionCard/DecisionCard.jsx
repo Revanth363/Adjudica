@@ -47,11 +47,15 @@ function formatCurrency(amount) {
 export default function DecisionCard({ decision, onResubmit }) {
   if (!decision) return null;
 
-  const config = DECISION_CONFIG[decision.decision] ?? DECISION_CONFIG["MANUAL_REVIEW"];
+  const isResolved = decision.review_status === "RESOLVED";
+  const displayDecision = isResolved ? decision.final_decision : decision.decision;
+  const config = DECISION_CONFIG[displayDecision] ?? DECISION_CONFIG["MANUAL_REVIEW"];
 
   const showApprovedAmount =
-    decision.decision === "APPROVED" ||
-    decision.decision === "PARTIAL";
+    displayDecision === "APPROVED" ||
+    displayDecision === "PARTIAL";
+
+  const approvedAmountToDisplay = isResolved ? decision.final_approved_amount : decision.approved_amount;
 
   return (
     <div className="dc-root">
@@ -63,11 +67,36 @@ export default function DecisionCard({ decision, onResubmit }) {
         <div className="dc-verdict__body">
           <div className="dc-verdict__top">
             <h2 className="dc-verdict__heading">{config.heading}</h2>
-            <Badge decision={decision.decision} />
+            <Badge decision={displayDecision} />
           </div>
           <p className="dc-verdict__desc">{config.desc}</p>
         </div>
       </div>
+
+      {/* ── Manual Review Resolution Banner ────────────────────────────── */}
+      {isResolved && (
+        <div className="dc-resolved-banner">
+          <span className="dc-resolved-banner__icon">👤</span>
+          <div className="dc-resolved-banner__body">
+            <h4 className="dc-resolved-banner__title">Manually Resolved</h4>
+            <p className="dc-resolved-banner__text">
+              This claim was reviewed and resolved as <strong>{decision.final_decision}</strong> by <strong>{decision.reviewed_by || "Manual Reviewer"}</strong> on{" "}
+              {decision.reviewed_at ? new Date(decision.reviewed_at).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              }) : "—"}.
+            </p>
+            {decision.reviewer_notes && (
+              <p className="dc-resolved-banner__notes">
+                <strong>Reviewer Notes:</strong> &ldquo;{decision.reviewer_notes}&rdquo;
+              </p>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* ── Claim Summary ───────────────────────────────────────────────── */}
       <div className="dc-summary">
@@ -90,14 +119,14 @@ export default function DecisionCard({ decision, onResubmit }) {
             <div className="dc-summary__item">
               <p className="dc-summary__label">Approved Amount</p>
               <p className="dc-summary__value dc-summary__value--green">
-                {formatCurrency(decision.approved_amount)}
+                {formatCurrency(approvedAmountToDisplay)}
               </p>
             </div>
           )}
 
           <div className="dc-summary__item">
             <p className="dc-summary__label">Decision</p>
-            <Badge decision={decision.decision} />
+            <Badge decision={displayDecision} />
           </div>
         </div>
 
@@ -156,7 +185,7 @@ export default function DecisionCard({ decision, onResubmit }) {
               <li className="dc-deductions__total">
                 <span>Final Approved</span>
                 <span className="dc-deductions__pos">
-                  {formatCurrency(decision.approved_amount)}
+                  {formatCurrency(approvedAmountToDisplay)}
                 </span>
               </li>
             )}
@@ -203,6 +232,14 @@ export default function DecisionCard({ decision, onResubmit }) {
               <li key={i}>{f}</li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {/* ── Decision Notes ──────────────────────────────────────────────── */}
+      {decision.notes && (
+        <div className="dc-notes">
+          <h3 className="dc-notes__title">Decision Notes</h3>
+          <p className="dc-notes__text">{decision.notes}</p>
         </div>
       )}
 

@@ -22,6 +22,9 @@ export const getClaimById = (claimId) => API.get(`/claims/${claimId}`);
 // Get all claims (with optional filters)
 export const getAllClaims = (params = {}) => API.get("/claims", { params });
 
+// Delete a claim by ID
+export const deleteClaim = (claimId) => API.delete(`/claims/${claimId}`);
+
 // ── Manual Review ─────────────────────────────────────────────────────────────
 
 // Get all claims pending manual review

@@ -250,4 +250,31 @@ const getClaimById = async (req, res) => {
   }
 };
 
-module.exports = { submitClaim, getAllClaims, getClaimById };
+// ─── DELETE /api/claims/:id ──────────────────────────────────────────────────
+// Delete a single claim by claim_id.
+
+const deleteClaim = async (req, res) => {
+  try {
+    const claim = await Claim.findOneAndDelete({ claim_id: req.params.id });
+
+    if (!claim) {
+      return res.status(404).json({
+        success: false,
+        message: `Claim ${req.params.id} not found.`,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: `Claim ${req.params.id} deleted successfully.`,
+    });
+  } catch (error) {
+    console.error("[deleteClaim] Error:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = { submitClaim, getAllClaims, getClaimById, deleteClaim };

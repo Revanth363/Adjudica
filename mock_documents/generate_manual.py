@@ -91,9 +91,9 @@ CASES = [
 "gst": "27ABCDE5678G1Z8",
 "bill_no": "SC/2024/1124",
 "bill_items": [
-("Consultation",1,5000,5000),
-("Medicines",1,5000,5000),
-("Lab Charges",1,5000,5000)
+("Consultation",1,500,500),
+("Medicines",1,500,500),
+("Lab Charges",1,500,500)
 ],
 "gst_rate": 0,
 "sig_name": "Dr. Anita Sharma",

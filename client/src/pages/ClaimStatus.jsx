@@ -55,6 +55,19 @@ export default function ClaimStatus() {
     navigate(`/claims/${trimmed}`);
   }
 
+  const handleViewDocument = async (filename, url) => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Network response was not ok");
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      window.open(blobUrl, "_blank");
+    } catch (error) {
+      console.warn("CORS/Fetch issue, falling back to direct URL opening:", error);
+      window.open(url, "_blank");
+    }
+  };
+
   // ── Render ────────────────────────────────────────────────────────────────
 
   return (
@@ -283,6 +296,30 @@ export default function ClaimStatus() {
                                 ₹{Number(item.amount).toLocaleString("en-IN")}
                               </span>
                             </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {decision.files && decision.files.length > 0 && (
+                      <div className="cs-medical__section">
+                        <h4 className="cs-medical__section-title">Submitted Documents</h4>
+                        <div className="cs-medical__files">
+                          {decision.files.map((file, idx) => (
+                            <button
+                              key={idx}
+                              type="button"
+                              className="cs-medical__file-btn"
+                              onClick={() => handleViewDocument(file.filename, file.url)}
+                              aria-label={`Open ${file.filename || `Document ${idx + 1}`} in a new tab`}
+                            >
+                              <span className="cs-medical__file-icon">
+                                {file.filename?.toLowerCase().endsWith(".pdf") ? "📄" : "🖼️"}
+                              </span>
+                              <span className="cs-medical__file-name">
+                                {file.filename || `Document ${idx + 1}`}
+                              </span>
+                            </button>
                           ))}
                         </div>
                       </div>

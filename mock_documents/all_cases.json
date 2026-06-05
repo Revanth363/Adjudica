@@ -1,0 +1,2709 @@
+[
+  {
+    "claimData": {
+      "claim_id": "TC001",
+      "member_id": "EMP001",
+      "member_name": "Rajesh Kumar",
+      "member_join_date": "2024-11-01",
+      "claim_amount": 890,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-03"
+    },
+    "extracted": {
+      "patient_name": "Rajesh Kumar",
+      "treatment_date": "2024-12-03",
+      "doctor_name": "Dr. Anil Sharma",
+      "doctor_reg": "KA/45678/2015",
+      "diagnosis": "Viral Fever with Mild URI",
+      "medicines": [
+        "Tab. Paracetamol 650mg",
+        "Tab. Vitamin C 500mg",
+        "Syp. Benadryl 10ml"
+      ],
+      "tests": [
+        "CBC",
+        "Dengue NS1 Antigen"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 380,
+          "amount": 380
+        },
+        {
+          "name": "CBC - Complete Blood Count",
+          "quantity": 1,
+          "rate": 312,
+          "amount": 312
+        },
+        {
+          "name": "Dengue NS1 Antigen Test",
+          "quantity": 1,
+          "rate": 198,
+          "amount": 198
+        }
+      ],
+      "total_amount": 890,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC001"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC002",
+      "member_id": "EMP002",
+      "member_name": "Priya Singh",
+      "member_join_date": "2024-10-15",
+      "claim_amount": 4476,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-11-16"
+    },
+    "extracted": {
+      "patient_name": "Priya Singh",
+      "treatment_date": "2024-11-16",
+      "doctor_name": "Dr. Ramesh Patel",
+      "doctor_reg": "MH/23456/2018",
+      "diagnosis": "Tooth Decay — Root Canal Indicated (Tooth #36)",
+      "medicines": [
+        "Tab. Amoxicillin 500mg",
+        "Tab. Ibuprofen 400mg",
+        "Chlorhexidine Mouthwash"
+      ],
+      "tests": [],
+      "procedures": [
+        "Root Canal Treatment - Tooth #36"
+      ],
+      "bill_items": [
+        {
+          "name": "Root Canal Treatment - Tooth #36",
+          "quantity": 1,
+          "rate": 3850,
+          "amount": 3850
+        },
+        {
+          "name": "Tab. Amoxicillin 500mg x10",
+          "quantity": 1,
+          "rate": 312,
+          "amount": 312
+        },
+        {
+          "name": "Chlorhexidine Mouthwash 200ml",
+          "quantity": 1,
+          "rate": 176,
+          "amount": 176
+        },
+        {
+          "name": "Tab. Ibuprofen 400mg x10",
+          "quantity": 1,
+          "rate": 138,
+          "amount": 138
+        }
+      ],
+      "total_amount": 4476,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC002"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC003",
+      "member_id": "EMP003",
+      "member_name": "Vikram Joshi",
+      "member_join_date": "2024-10-15",
+      "claim_amount": 2513,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-11-16"
+    },
+    "extracted": {
+      "patient_name": "Vikram Joshi",
+      "treatment_date": "2024-11-16",
+      "doctor_name": "Dr. Sanjay Mehta",
+      "doctor_reg": "GJ/56789/2014",
+      "diagnosis": "Type 2 Diabetes Mellitus — Newly Diagnosed",
+      "medicines": [
+        "Tab. Metformin 500mg",
+        "Tab. Glimepiride 1mg",
+        "Tab. Vitamin B12 500mcg"
+      ],
+      "tests": [
+        "Fasting Blood Sugar",
+        "HbA1c",
+        "Lipid Profile",
+        "KFT"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee (Specialist)",
+          "quantity": 1,
+          "rate": 620,
+          "amount": 620
+        },
+        {
+          "name": "Fasting Blood Sugar",
+          "quantity": 1,
+          "rate": 134,
+          "amount": 134
+        },
+        {
+          "name": "HbA1c Test",
+          "quantity": 1,
+          "rate": 487,
+          "amount": 487
+        },
+        {
+          "name": "Lipid Profile",
+          "quantity": 1,
+          "rate": 574,
+          "amount": 574
+        },
+        {
+          "name": "Kidney Function Test (KFT)",
+          "quantity": 1,
+          "rate": 423,
+          "amount": 423
+        },
+        {
+          "name": "Tab. Metformin 500mg x30",
+          "quantity": 1,
+          "rate": 167,
+          "amount": 167
+        },
+        {
+          "name": "Tab. Glimepiride 1mg x30",
+          "quantity": 1,
+          "rate": 108,
+          "amount": 108
+        }
+      ],
+      "total_amount": 2513,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC003"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC004",
+      "member_id": "EMP004",
+      "member_name": "Meena Iyer",
+      "member_join_date": "2024-10-20",
+      "claim_amount": 1843,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-11-21"
+    },
+    "extracted": {
+      "patient_name": "Meena Iyer",
+      "treatment_date": "2024-11-21",
+      "doctor_name": "Dr. Krishnamurthy R.",
+      "doctor_reg": "TN/34521/2013",
+      "diagnosis": "Acute Gastroenteritis",
+      "medicines": [
+        "Tab. Ondansetron 4mg",
+        "Tab. Norfloxacin 400mg",
+        "ORS Sachet"
+      ],
+      "tests": [
+        "Stool Routine"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 524,
+          "amount": 524
+        },
+        {
+          "name": "Stool Routine Examination",
+          "quantity": 1,
+          "rate": 387,
+          "amount": 387
+        },
+        {
+          "name": "Tab. Norfloxacin 400mg x10",
+          "quantity": 1,
+          "rate": 643,
+          "amount": 643
+        },
+        {
+          "name": "ORS Sachet x5",
+          "quantity": 1,
+          "rate": 289,
+          "amount": 289
+        }
+      ],
+      "total_amount": 1843,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC004"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC005",
+      "member_id": "EMP005",
+      "member_name": "Suresh Patil",
+      "member_join_date": "2024-11-02",
+      "claim_amount": 2163,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-04"
+    },
+    "extracted": {
+      "patient_name": "Suresh Patil",
+      "treatment_date": "2024-12-04",
+      "doctor_name": "Dr. Venkata Rao",
+      "doctor_reg": "AP/67890/2017",
+      "diagnosis": "Suspected Lumbar Disc Herniation (L4-L5)",
+      "medicines": [
+        "Tab. Diclofenac 50mg",
+        "Tab. Pregabalin 75mg",
+        "Ointment Volini"
+      ],
+      "tests": [
+        "X-Ray Lumbar Spine AP & Lateral"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Orthopaedic Consultation",
+          "quantity": 1,
+          "rate": 843,
+          "amount": 843
+        },
+        {
+          "name": "X-Ray Lumbar Spine (2 views)",
+          "quantity": 1,
+          "rate": 587,
+          "amount": 587
+        },
+        {
+          "name": "Tab. Diclofenac 50mg x10",
+          "quantity": 1,
+          "rate": 249,
+          "amount": 249
+        },
+        {
+          "name": "Tab. Pregabalin 75mg x10",
+          "quantity": 1,
+          "rate": 484,
+          "amount": 484
+        }
+      ],
+      "total_amount": 2163,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC005"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC006",
+      "member_id": "EMP006",
+      "member_name": "Anita Desai",
+      "member_join_date": "2024-10-18",
+      "claim_amount": 2463,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-11-19"
+    },
+    "extracted": {
+      "patient_name": "Anita Desai",
+      "treatment_date": "2024-11-19",
+      "doctor_name": "Dr. Subhash Banerjee",
+      "doctor_reg": "WB/34567/2015",
+      "diagnosis": "Hypothyroidism with Fatigue",
+      "medicines": [
+        "Tab. Levothyroxine 50mcg",
+        "Tab. Vitamin D3 60000 IU"
+      ],
+      "tests": [
+        "Thyroid Profile",
+        "Fasting Insulin"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Endocrinology Consultation",
+          "quantity": 1,
+          "rate": 987,
+          "amount": 987
+        },
+        {
+          "name": "Thyroid Profile (T3/T4/TSH)",
+          "quantity": 1,
+          "rate": 618,
+          "amount": 618
+        },
+        {
+          "name": "Fasting Insulin Level",
+          "quantity": 1,
+          "rate": 436,
+          "amount": 436
+        },
+        {
+          "name": "Tab. Levothyroxine 50mcg x30",
+          "quantity": 1,
+          "rate": 284,
+          "amount": 284
+        },
+        {
+          "name": "Tab. Vitamin D3 60000 IU x4",
+          "quantity": 1,
+          "rate": 138,
+          "amount": 138
+        }
+      ],
+      "total_amount": 2463,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC006"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC007",
+      "member_id": "EMP007",
+      "member_name": "Sneha Reddy",
+      "member_join_date": "2024-10-25",
+      "claim_amount": 894,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-11-26"
+    },
+    "extracted": {
+      "patient_name": "Sneha Reddy",
+      "treatment_date": "2024-11-26",
+      "doctor_name": null,
+      "doctor_reg": null,
+      "diagnosis": "Unknown",
+      "medicines": [],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 420,
+          "amount": 420
+        },
+        {
+          "name": "Tab. Azithromycin 500mg x5",
+          "quantity": 1,
+          "rate": 237,
+          "amount": 237
+        },
+        {
+          "name": "Tab. Cetirizine 10mg x10",
+          "quantity": 1,
+          "rate": 74,
+          "amount": 74
+        },
+        {
+          "name": "Nasal Spray Otrivin",
+          "quantity": 1,
+          "rate": 163,
+          "amount": 163
+        }
+      ],
+      "total_amount": 894,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC007"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC008",
+      "member_id": "EMP008",
+      "member_name": "Deepak Shah",
+      "member_join_date": "2024-11-03",
+      "claim_amount": 2285,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-05"
+    },
+    "extracted": {
+      "patient_name": "Deepak Shah",
+      "treatment_date": "2024-12-05",
+      "doctor_name": "Dr. Suresh Iyer",
+      "doctor_reg": "TN/56789/2013",
+      "diagnosis": "Acute Bronchitis",
+      "medicines": [
+        "Tab. Azithromycin 500mg",
+        "Syp. Ascoril LS 10ml",
+        "Tab. Montelukast 10mg"
+      ],
+      "tests": [
+        "X-Ray Chest PA View",
+        "CBC"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Specialist Consultation Fee",
+          "quantity": 1,
+          "rate": 1450,
+          "amount": 1450
+        },
+        {
+          "name": "X-Ray Chest PA View",
+          "quantity": 1,
+          "rate": 587,
+          "amount": 587
+        },
+        {
+          "name": "CBC - Complete Blood Count",
+          "quantity": 1,
+          "rate": 312,
+          "amount": 312
+        },
+        {
+          "name": "Tab. Azithromycin 500mg x5",
+          "quantity": 1,
+          "rate": 173,
+          "amount": 173
+        },
+        {
+          "name": "Syp. Ascoril LS 100ml",
+          "quantity": 1,
+          "rate": 138,
+          "amount": 138
+        },
+        {
+          "name": "Tab. Montelukast 10mg x7",
+          "quantity": 1,
+          "rate": 196,
+          "amount": 196
+        },
+        {
+          "name": "Network Cashless Discount (20%)",
+          "quantity": 1,
+          "rate": -571,
+          "amount": -571
+        }
+      ],
+      "total_amount": 2285,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC008"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC009",
+      "member_id": "EMP009",
+      "member_name": "Ramesh Nair",
+      "member_join_date": "2024-11-05",
+      "claim_amount": 2763,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-07"
+    },
+    "extracted": {
+      "patient_name": "Ramesh Nair",
+      "treatment_date": "2024-12-07",
+      "doctor_name": "Dr. Pradeep Kumar",
+      "doctor_reg": "KL/78901/2012",
+      "diagnosis": "Hypertension with Dyslipidaemia",
+      "medicines": [
+        "Tab. Amlodipine 5mg",
+        "Tab. Atorvastatin 20mg",
+        "Tab. Aspirin 75mg",
+        "Tab. Telmisartan 40mg"
+      ],
+      "tests": [
+        "Lipid Profile",
+        "ECG",
+        "Renal Function Test"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Specialist Consultation (Cardiology)",
+          "quantity": 1,
+          "rate": 987,
+          "amount": 987
+        },
+        {
+          "name": "ECG",
+          "quantity": 1,
+          "rate": 276,
+          "amount": 276
+        },
+        {
+          "name": "Lipid Profile",
+          "quantity": 1,
+          "rate": 574,
+          "amount": 574
+        },
+        {
+          "name": "Renal Function Test",
+          "quantity": 1,
+          "rate": 463,
+          "amount": 463
+        },
+        {
+          "name": "Tab. Amlodipine 5mg x30",
+          "quantity": 1,
+          "rate": 167,
+          "amount": 167
+        },
+        {
+          "name": "Tab. Atorvastatin 20mg x30",
+          "quantity": 1,
+          "rate": 228,
+          "amount": 228
+        },
+        {
+          "name": "Tab. Aspirin 75mg x30",
+          "quantity": 1,
+          "rate": 68,
+          "amount": 68
+        }
+      ],
+      "total_amount": 2763,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC009"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC010",
+      "member_id": "EMP010",
+      "member_name": "Kavita Sharma",
+      "member_join_date": "2024-11-08",
+      "claim_amount": 2153,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-10"
+    },
+    "extracted": {
+      "patient_name": "Kavita Sharma",
+      "treatment_date": "2024-12-10",
+      "doctor_name": "Dr. Nitin Gupta",
+      "doctor_reg": "DL/12345/2016",
+      "diagnosis": "Migraine — Chronic",
+      "medicines": [
+        "Tab. Sumatriptan 50mg",
+        "Tab. Propranolol 40mg",
+        "Tab. Diclofenac 50mg",
+        "Cap. Flunarizine 10mg"
+      ],
+      "tests": [
+        "CBC"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 743,
+          "amount": 743
+        },
+        {
+          "name": "CBC",
+          "quantity": 1,
+          "rate": 312,
+          "amount": 312
+        },
+        {
+          "name": "Tab. Sumatriptan 50mg x6",
+          "quantity": 1,
+          "rate": 396,
+          "amount": 396
+        },
+        {
+          "name": "Tab. Propranolol 40mg x30",
+          "quantity": 1,
+          "rate": 143,
+          "amount": 143
+        },
+        {
+          "name": "Tab. Diclofenac 50mg x10",
+          "quantity": 1,
+          "rate": 483,
+          "amount": 483
+        },
+        {
+          "name": "Cap. Flunarizine 10mg x30",
+          "quantity": 1,
+          "rate": 76,
+          "amount": 76
+        }
+      ],
+      "total_amount": 2153,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC010"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC011",
+      "member_id": "EMP011",
+      "member_name": "Arjun Mehta",
+      "member_join_date": "2023-12-15",
+      "claim_amount": 1324,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-01-16"
+    },
+    "extracted": {
+      "patient_name": "Arjun Mehta",
+      "treatment_date": "2024-01-16",
+      "doctor_name": "Dr. Rakesh Verma",
+      "doctor_reg": "DL/23456/2017",
+      "diagnosis": "Acute Sinusitis",
+      "medicines": [
+        "Tab. Amoxicillin-Clavulanate 625mg",
+        "Tab. Levocetirizine 5mg",
+        "Nasal Saline Drops"
+      ],
+      "tests": [
+        "X-Ray PNS (Paranasal Sinuses)"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 463,
+          "amount": 463
+        },
+        {
+          "name": "X-Ray PNS View",
+          "quantity": 1,
+          "rate": 387,
+          "amount": 387
+        },
+        {
+          "name": "Tab. Amoxicillin-Clavulanate 625mg x14",
+          "quantity": 1,
+          "rate": 312,
+          "amount": 312
+        },
+        {
+          "name": "Tab. Levocetirizine 5mg x5",
+          "quantity": 1,
+          "rate": 68,
+          "amount": 68
+        },
+        {
+          "name": "Nasal Saline Drops 10ml",
+          "quantity": 1,
+          "rate": 94,
+          "amount": 94
+        }
+      ],
+      "total_amount": 1324,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC011"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC012",
+      "member_id": "EMP012",
+      "member_name": "Pooja Iyer",
+      "member_join_date": "2024-11-20",
+      "claim_amount": 1645,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-22",
+      "member_verified": false
+    },
+    "extracted": {
+      "patient_name": "Pooja Iyer",
+      "treatment_date": "2024-12-22",
+      "doctor_name": "Dr. Shweta Pillai",
+      "doctor_reg": "KL/34567/2019",
+      "diagnosis": "Urinary Tract Infection (UTI)",
+      "medicines": [
+        "Tab. Nitrofurantoin 100mg",
+        "Tab. Phenazopyridine 200mg",
+        "Tab. Cranberry Extract"
+      ],
+      "tests": [
+        "Urine Routine & Microscopy",
+        "Urine Culture & Sensitivity"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 524,
+          "amount": 524
+        },
+        {
+          "name": "Urine Routine & Microscopy",
+          "quantity": 1,
+          "rate": 178,
+          "amount": 178
+        },
+        {
+          "name": "Urine Culture & Sensitivity",
+          "quantity": 1,
+          "rate": 643,
+          "amount": 643
+        },
+        {
+          "name": "Tab. Nitrofurantoin 100mg x10",
+          "quantity": 1,
+          "rate": 213,
+          "amount": 213
+        },
+        {
+          "name": "Tab. Phenazopyridine 200mg x6",
+          "quantity": 1,
+          "rate": 87,
+          "amount": 87
+        }
+      ],
+      "total_amount": 1645,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC012"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC013",
+      "member_id": "EMP013",
+      "member_name": "Sanjay Kulkarni",
+      "member_join_date": "2024-11-20",
+      "claim_amount": 2247,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-22"
+    },
+    "extracted": {
+      "patient_name": "Sanjay Kulkarni",
+      "treatment_date": "2024-12-22",
+      "doctor_name": "Dr. Manoj Deshpande",
+      "doctor_reg": "MH-4567-2020",
+      "diagnosis": "Lower Respiratory Tract Infection",
+      "medicines": [
+        "Tab. Azithromycin 500mg",
+        "Tab. Doxycycline 100mg",
+        "Syp. Ambrodil-S 10ml"
+      ],
+      "tests": [
+        "Sputum Culture",
+        "Chest X-Ray PA"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 712,
+          "amount": 712
+        },
+        {
+          "name": "Chest X-Ray PA View",
+          "quantity": 1,
+          "rate": 423,
+          "amount": 423
+        },
+        {
+          "name": "Sputum Culture & Sensitivity",
+          "quantity": 1,
+          "rate": 587,
+          "amount": 587
+        },
+        {
+          "name": "Tab. Azithromycin 500mg x5",
+          "quantity": 1,
+          "rate": 173,
+          "amount": 173
+        },
+        {
+          "name": "Tab. Doxycycline 100mg x14",
+          "quantity": 1,
+          "rate": 218,
+          "amount": 218
+        },
+        {
+          "name": "Syp. Ambrodil-S 100ml",
+          "quantity": 1,
+          "rate": 134,
+          "amount": 134
+        }
+      ],
+      "total_amount": 2247,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC013"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC014",
+      "member_id": "EMP014",
+      "member_name": "Rahul Sharma",
+      "member_join_date": "2024-11-20",
+      "claim_amount": 1640,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-22"
+    },
+    "extracted": {
+      "patient_name": "Rakesh Kumar",
+      "treatment_date": "2024-12-22",
+      "doctor_name": "Dr. Amit Saxena",
+      "doctor_reg": "UP/56789/2016",
+      "diagnosis": "Allergic Rhinitis with Conjunctivitis",
+      "medicines": [
+        "Tab. Fexofenadine 180mg",
+        "Eye Drops Olopatadine 0.1%",
+        "Nasal Spray Fluticasone"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee (ENT Specialist)",
+          "quantity": 1,
+          "rate": 843,
+          "amount": 843
+        },
+        {
+          "name": "Tab. Fexofenadine 180mg x10",
+          "quantity": 1,
+          "rate": 234,
+          "amount": 234
+        },
+        {
+          "name": "Eye Drops Olopatadine 0.1% 5ml",
+          "quantity": 1,
+          "rate": 187,
+          "amount": 187
+        },
+        {
+          "name": "Nasal Spray Fluticasone 150 doses",
+          "quantity": 1,
+          "rate": 376,
+          "amount": 376
+        }
+      ],
+      "total_amount": 1640,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC014"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC015",
+      "member_id": "EMP015",
+      "member_name": "Geeta Patel",
+      "member_join_date": "2024-11-20",
+      "claim_amount": 347,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-22"
+    },
+    "extracted": {
+      "patient_name": "Geeta Patel",
+      "treatment_date": "2024-12-22",
+      "doctor_name": "Dr. Hina Shah",
+      "doctor_reg": "GJ/67890/2018",
+      "diagnosis": "Mild Headache — Tension Type",
+      "medicines": [
+        "Tab. Paracetamol 500mg",
+        "Tab. Multivitamin"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 199,
+          "amount": 199
+        },
+        {
+          "name": "Tab. Paracetamol 500mg x6",
+          "quantity": 1,
+          "rate": 48,
+          "amount": 48
+        },
+        {
+          "name": "Tab. Multivitamin x7",
+          "quantity": 1,
+          "rate": 100,
+          "amount": 100
+        }
+      ],
+      "total_amount": 347,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC015"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC016",
+      "member_id": "EMP016",
+      "member_name": "Vikram Nair",
+      "member_join_date": "2024-11-20",
+      "claim_amount": 2847,
+      "ytd_claimed": 50000,
+      "treatment_date": "2024-12-22"
+    },
+    "extracted": {
+      "patient_name": "Vikram Nair",
+      "treatment_date": "2024-12-22",
+      "doctor_name": "Dr. Sunil Menon",
+      "doctor_reg": "KL/89012/2014",
+      "diagnosis": "Knee Osteoarthritis — Right",
+      "medicines": [
+        "Tab. Etoricoxib 90mg",
+        "Tab. Calcium + Vit D3",
+        "Gel Voltaren 50g"
+      ],
+      "tests": [
+        "X-Ray Right Knee AP & Lateral"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee (Orthopaedic)",
+          "quantity": 1,
+          "rate": 1124,
+          "amount": 1124
+        },
+        {
+          "name": "X-Ray Right Knee (2 views)",
+          "quantity": 1,
+          "rate": 876,
+          "amount": 876
+        },
+        {
+          "name": "Tab. Etoricoxib 90mg x10",
+          "quantity": 1,
+          "rate": 487,
+          "amount": 487
+        },
+        {
+          "name": "Tab. Calcium + Vit D3 x30",
+          "quantity": 1,
+          "rate": 213,
+          "amount": 213
+        },
+        {
+          "name": "Gel Voltaren 50g",
+          "quantity": 1,
+          "rate": 147,
+          "amount": 147
+        }
+      ],
+      "total_amount": 2847,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC016"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC017",
+      "member_id": "EMP017",
+      "member_name": "Nalini Krishnan",
+      "member_join_date": "2024-11-20",
+      "claim_amount": 4999,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-22"
+    },
+    "extracted": {
+      "patient_name": "Nalini Krishnan",
+      "treatment_date": "2024-12-22",
+      "doctor_name": "Dr. Padma Venkatesh",
+      "doctor_reg": "TN/90123/2011",
+      "diagnosis": "Rheumatoid Arthritis — Active Disease",
+      "medicines": [
+        "Tab. Methotrexate 15mg",
+        "Tab. Hydroxychloroquine 400mg"
+      ],
+      "tests": [
+        "ESR",
+        "CRP"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee (Rheumatologist)",
+          "quantity": 1,
+          "rate": 1876,
+          "amount": 1876
+        },
+        {
+          "name": "ESR + CRP",
+          "quantity": 1,
+          "rate": 1643,
+          "amount": 1643
+        },
+        {
+          "name": "Tab. Methotrexate 15mg x4",
+          "quantity": 1,
+          "rate": 284,
+          "amount": 284
+        },
+        {
+          "name": "Tab. Hydroxychloroquine 400mg x30",
+          "quantity": 1,
+          "rate": 876,
+          "amount": 876
+        },
+        {
+          "name": "Tab. Folic Acid 5mg x30",
+          "quantity": 1,
+          "rate": 320,
+          "amount": 320
+        }
+      ],
+      "total_amount": 4999,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC017"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC018",
+      "member_id": "EMP018",
+      "member_name": "Ravi Shankar",
+      "member_join_date": "2024-11-22",
+      "claim_amount": 1636,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-24"
+    },
+    "extracted": {
+      "patient_name": "Ravi Shankar",
+      "treatment_date": "2024-12-24",
+      "doctor_name": "Dr. Ashok Tiwari",
+      "doctor_reg": "MP/12345/2015",
+      "diagnosis": "Acute Gastritis",
+      "medicines": [
+        "Tab. Pantoprazole 40mg",
+        "Tab. Domperidone 10mg",
+        "Syp. Mucaine Gel 15ml"
+      ],
+      "tests": [
+        "H. Pylori Antigen (Stool)"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 634,
+          "amount": 634
+        },
+        {
+          "name": "H. Pylori Antigen Stool Test",
+          "quantity": 1,
+          "rate": 487,
+          "amount": 487
+        },
+        {
+          "name": "Tab. Pantoprazole 40mg x14",
+          "quantity": 1,
+          "rate": 213,
+          "amount": 213
+        },
+        {
+          "name": "Tab. Domperidone 10mg x15",
+          "quantity": 1,
+          "rate": 124,
+          "amount": 124
+        },
+        {
+          "name": "Syp. Mucaine Gel 170ml",
+          "quantity": 1,
+          "rate": 178,
+          "amount": 178
+        }
+      ],
+      "total_amount": 1636,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": ["altered"],
+      "extraction_confidence": 0.95
+    },
+    "expected": "MANUAL_REVIEW",
+    "case_id": "TC018"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC019",
+      "member_id": "EMP019",
+      "member_name": "Mohan Das",
+      "member_join_date": "2024-11-28",
+      "claim_amount": 2429,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-29"
+    },
+    "extracted": {
+      "patient_name": "Mohan Das",
+      "treatment_date": "2024-12-29",
+      "doctor_name": "Dr. Rajendra Prasad",
+      "doctor_reg": "BR/23456/2013",
+      "diagnosis": "Hypertension — Newly Diagnosed (BP 160/100)",
+      "medicines": [
+        "Tab. Amlodipine 5mg",
+        "Tab. Losartan 50mg",
+        "Tab. Aspirin 75mg"
+      ],
+      "tests": [
+        "ECG",
+        "Renal Function Test",
+        "Urine Routine"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee (Cardiologist)",
+          "quantity": 1,
+          "rate": 987,
+          "amount": 987
+        },
+        {
+          "name": "ECG 12-lead",
+          "quantity": 1,
+          "rate": 276,
+          "amount": 276
+        },
+        {
+          "name": "Renal Function Test",
+          "quantity": 1,
+          "rate": 463,
+          "amount": 463
+        },
+        {
+          "name": "Urine Routine",
+          "quantity": 1,
+          "rate": 134,
+          "amount": 134
+        },
+        {
+          "name": "Tab. Amlodipine 5mg x30",
+          "quantity": 1,
+          "rate": 167,
+          "amount": 167
+        },
+        {
+          "name": "Tab. Losartan 50mg x30",
+          "quantity": 1,
+          "rate": 348,
+          "amount": 348
+        },
+        {
+          "name": "Tab. Aspirin 75mg x30",
+          "quantity": 1,
+          "rate": 54,
+          "amount": 54
+        }
+      ],
+      "total_amount": 2429,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC019"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC020",
+      "member_id": "EMP020",
+      "member_name": "Nisha Agarwal",
+      "member_join_date": "2024-11-30",
+      "claim_amount": 4999,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-01"
+    },
+    "extracted": {
+      "patient_name": "Nisha Agarwal",
+      "treatment_date": "2025-01-01",
+      "doctor_name": "Dr. Priya Kapoor",
+      "doctor_reg": "RJ/34567/2017",
+      "diagnosis": "Stage II Breast Cancer — Post Chemotherapy Monitoring",
+      "medicines": [
+        "Tab. Tamoxifen 20mg",
+        "Tab. Letrozole 2.5mg",
+        "Tab. Ondansetron 8mg"
+      ],
+      "tests": [
+        "CA 125 Tumour Marker",
+        "CBC"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Oncology Consultation Fee",
+          "quantity": 1,
+          "rate": 2134,
+          "amount": 2134
+        },
+        {
+          "name": "CA 125 Tumour Marker",
+          "quantity": 1,
+          "rate": 876,
+          "amount": 876
+        },
+        {
+          "name": "CBC - Complete Blood Count",
+          "quantity": 1,
+          "rate": 312,
+          "amount": 312
+        },
+        {
+          "name": "Tab. Tamoxifen 20mg x30",
+          "quantity": 1,
+          "rate": 1677,
+          "amount": 1677
+        }
+      ],
+      "total_amount": 4999,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC020"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC021",
+      "member_id": "EMP021",
+      "member_name": "Rajat Verma",
+      "member_join_date": "2024-12-02",
+      "claim_amount": 1357,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-03"
+    },
+    "extracted": {
+      "patient_name": "Rajat Verma",
+      "treatment_date": "2025-01-03",
+      "doctor_name": "Dr. Neha Kapoor",
+      "doctor_reg": "DL/45678/2018",
+      "diagnosis": "Viral Fever",
+      "medicines": [
+        "Tab. Paracetamol 650mg",
+        "ORS Sachet",
+        "Tab. Vitamin C 500mg"
+      ],
+      "tests": [
+        "CBC"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 643,
+          "amount": 643
+        },
+        {
+          "name": "CBC",
+          "quantity": 1,
+          "rate": 387,
+          "amount": 387
+        },
+        {
+          "name": "Tab. Paracetamol 650mg x15",
+          "quantity": 1,
+          "rate": 118,
+          "amount": 118
+        },
+        {
+          "name": "ORS Sachets x5",
+          "quantity": 1,
+          "rate": 83,
+          "amount": 83
+        },
+        {
+          "name": "Vitamin C 500mg x10",
+          "quantity": 1,
+          "rate": 126,
+          "amount": 126
+        }
+      ],
+      "total_amount": 1357,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC021"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC022",
+      "member_id": "EMP022",
+      "member_name": "Anjali Rao",
+      "member_join_date": "2024-12-05",
+      "claim_amount": 1904,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-06"
+    },
+    "extracted": {
+      "patient_name": "Anjali Rao",
+      "treatment_date": "2025-01-06",
+      "doctor_name": "Dr. Karthik Reddy",
+      "doctor_reg": "KA/56789/2017",
+      "diagnosis": "Acute Gastroenteritis",
+      "medicines": [
+        "ORS Powder",
+        "Tab. Pantoprazole 40mg",
+        "Probiotic Capsules"
+      ],
+      "tests": [
+        "Stool Routine"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 712,
+          "amount": 712
+        },
+        {
+          "name": "Stool Routine Examination",
+          "quantity": 1,
+          "rate": 268,
+          "amount": 268
+        },
+        {
+          "name": "ORS Powder x10",
+          "quantity": 1,
+          "rate": 174,
+          "amount": 174
+        },
+        {
+          "name": "Pantoprazole 40mg x10",
+          "quantity": 1,
+          "rate": 287,
+          "amount": 287
+        },
+        {
+          "name": "Probiotic Capsules x10",
+          "quantity": 1,
+          "rate": 463,
+          "amount": 463
+        }
+      ],
+      "total_amount": 1904,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC022"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC023",
+      "member_id": "EMP023",
+      "member_name": "Prakash Nair",
+      "member_join_date": "2024-12-08",
+      "claim_amount": 2165,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-09"
+    },
+    "extracted": {
+      "patient_name": "Prakash Nair",
+      "treatment_date": "2025-01-09",
+      "doctor_name": "Dr. Sunil Menon",
+      "doctor_reg": "KL/89012/2014",
+      "diagnosis": "Hypertension Follow-up",
+      "medicines": [
+        "Tab. Amlodipine 5mg",
+        "Tab. Losartan 50mg"
+      ],
+      "tests": [
+        "ECG"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Cardiology Consultation",
+          "quantity": 1,
+          "rate": 1187,
+          "amount": 1187
+        },
+        {
+          "name": "ECG 12 Lead",
+          "quantity": 1,
+          "rate": 463,
+          "amount": 463
+        },
+        {
+          "name": "Amlodipine 5mg x30",
+          "quantity": 1,
+          "rate": 167,
+          "amount": 167
+        },
+        {
+          "name": "Losartan 50mg x30",
+          "quantity": 1,
+          "rate": 348,
+          "amount": 348
+        }
+      ],
+      "total_amount": 2165,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC023"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC024",
+      "member_id": "EMP024",
+      "member_name": "Sneha Kulkarni",
+      "member_join_date": "2024-12-10",
+      "claim_amount": 2013,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-11"
+    },
+    "extracted": {
+      "patient_name": "Sneha Kulkarni",
+      "treatment_date": "2025-01-11",
+      "doctor_name": "Dr. Vivek Sharma",
+      "doctor_reg": "MH/45678/2019",
+      "diagnosis": "Ankle Sprain",
+      "medicines": [
+        "Tab. Aceclofenac",
+        "Pain Relief Gel"
+      ],
+      "tests": [
+        "X-Ray Ankle"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Orthopaedic Consultation",
+          "quantity": 1,
+          "rate": 876,
+          "amount": 876
+        },
+        {
+          "name": "X-Ray Ankle AP/Lateral",
+          "quantity": 1,
+          "rate": 743,
+          "amount": 743
+        },
+        {
+          "name": "Aceclofenac Tablets",
+          "quantity": 1,
+          "rate": 218,
+          "amount": 218
+        },
+        {
+          "name": "Pain Relief Gel",
+          "quantity": 1,
+          "rate": 176,
+          "amount": 176
+        }
+      ],
+      "total_amount": 2013,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED - NETWORK CASHLESS",
+    "case_id": "TC024"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC025",
+      "member_id": "EMP025",
+      "member_name": "Arvind Patel",
+      "member_join_date": "2024-12-12",
+      "claim_amount": 1945,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-13"
+    },
+    "extracted": {
+      "patient_name": "Arvind Patel",
+      "treatment_date": "2025-01-13",
+      "doctor_name": "Dr. Hina Shah",
+      "doctor_reg": "GJ/67890/2018",
+      "diagnosis": "Allergic Rhinitis",
+      "medicines": [
+        "Tab. Cetirizine 10mg",
+        "Fluticasone Nasal Spray"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "ENT Consultation",
+          "quantity": 1,
+          "rate": 834,
+          "amount": 834
+        },
+        {
+          "name": "Tab. Cetirizine 10mg x10",
+          "quantity": 1,
+          "rate": 124,
+          "amount": 124
+        },
+        {
+          "name": "Fluticasone Nasal Spray",
+          "quantity": 1,
+          "rate": 987,
+          "amount": 987
+        }
+      ],
+      "total_amount": 1945,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC025"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC026",
+      "member_id": "EMP026",
+      "member_name": "Kiran Sharma",
+      "member_join_date": "2024-12-15",
+      "claim_amount": 2312,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-16"
+    },
+    "extracted": {
+      "patient_name": "Kiran Sharma",
+      "treatment_date": "2025-01-16",
+      "doctor_name": "Dr. Farida Haidari",
+      "doctor_reg": "RJ/99123/2019",
+      "diagnosis": "Type 2 Diabetes Follow-up",
+      "medicines": [
+        "Tab. Metformin 500mg",
+        "Tab. Glimepiride 1mg"
+      ],
+      "tests": [
+        "Fasting Blood Sugar",
+        "HbA1c"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Diabetology Consultation",
+          "quantity": 1,
+          "rate": 912,
+          "amount": 912
+        },
+        {
+          "name": "HbA1c Test",
+          "quantity": 1,
+          "rate": 687,
+          "amount": 687
+        },
+        {
+          "name": "Fasting Blood Sugar",
+          "quantity": 1,
+          "rate": 184,
+          "amount": 184
+        },
+        {
+          "name": "Metformin 500mg x30",
+          "quantity": 1,
+          "rate": 246,
+          "amount": 246
+        },
+        {
+          "name": "Glimepiride 1mg x30",
+          "quantity": 1,
+          "rate": 283,
+          "amount": 283
+        }
+      ],
+      "total_amount": 2312,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC026"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC027",
+      "member_id": "EMP027",
+      "member_name": "Pallavi Menon",
+      "member_join_date": "2024-12-18",
+      "claim_amount": 1797,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-19"
+    },
+    "extracted": {
+      "patient_name": "Pallavi Menon",
+      "treatment_date": "2025-01-19",
+      "doctor_name": "Dr. Anita Nair",
+      "doctor_reg": "KL/56789/2016",
+      "diagnosis": "Migraine",
+      "medicines": [
+        "Tab. Sumatriptan 50mg",
+        "Tab. Paracetamol 650mg"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Neurology Consultation",
+          "quantity": 1,
+          "rate": 1246,
+          "amount": 1246
+        },
+        {
+          "name": "Sumatriptan 50mg x5",
+          "quantity": 1,
+          "rate": 438,
+          "amount": 438
+        },
+        {
+          "name": "Paracetamol 650mg x10",
+          "quantity": 1,
+          "rate": 113,
+          "amount": 113
+        }
+      ],
+      "total_amount": 1797,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC027"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC028",
+      "member_id": "EMP028",
+      "member_name": "Nikhil Agarwal",
+      "member_join_date": "2024-12-20",
+      "claim_amount": 1807,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-21"
+    },
+    "extracted": {
+      "patient_name": "Nikhil Agarwal",
+      "treatment_date": "2025-01-21",
+      "doctor_name": "Dr. Ruchi Malhotra",
+      "doctor_reg": "DL/78456/2016",
+      "diagnosis": "Upper Respiratory Tract Infection",
+      "medicines": [
+        "Tab. Azithromycin 500mg",
+        "Tab. Paracetamol 650mg",
+        "Cough Syrup"
+      ],
+      "tests": [
+        "CBC"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 768,
+          "amount": 768
+        },
+        {
+          "name": "CBC",
+          "quantity": 1,
+          "rate": 392,
+          "amount": 392
+        },
+        {
+          "name": "Azithromycin 500mg",
+          "quantity": 1,
+          "rate": 286,
+          "amount": 286
+        },
+        {
+          "name": "Paracetamol 650mg x15",
+          "quantity": 1,
+          "rate": 118,
+          "amount": 118
+        },
+        {
+          "name": "Cough Syrup",
+          "quantity": 1,
+          "rate": 243,
+          "amount": 243
+        }
+      ],
+      "total_amount": 1807,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC028"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC029",
+      "member_id": "EMP029",
+      "member_name": "Shalini Verma",
+      "member_join_date": "2024-12-22",
+      "claim_amount": 1652,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-23"
+    },
+    "extracted": {
+      "patient_name": "Shalini Verma",
+      "treatment_date": "2025-01-23",
+      "doctor_name": "Dr. K. Balasubramanian",
+      "doctor_reg": "TN/45891/2015",
+      "diagnosis": "Urinary Tract Infection",
+      "medicines": [
+        "Tab. Nitrofurantoin 100mg",
+        "Urinary Alkalizer Syrup"
+      ],
+      "tests": [
+        "Urine Routine"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation Fee",
+          "quantity": 1,
+          "rate": 824,
+          "amount": 824
+        },
+        {
+          "name": "Urine Routine",
+          "quantity": 1,
+          "rate": 276,
+          "amount": 276
+        },
+        {
+          "name": "Nitrofurantoin 100mg",
+          "quantity": 1,
+          "rate": 334,
+          "amount": 334
+        },
+        {
+          "name": "Urinary Alkalizer Syrup",
+          "quantity": 1,
+          "rate": 218,
+          "amount": 218
+        }
+      ],
+      "total_amount": 1652,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC029"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC030",
+      "member_id": "EMP030",
+      "member_name": "Harish Chandra",
+      "member_join_date": "2024-12-24",
+      "claim_amount": 2636,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-25"
+    },
+    "extracted": {
+      "patient_name": "Harish Chandra",
+      "treatment_date": "2025-01-25",
+      "doctor_name": "Dr. Vivek Sinha",
+      "doctor_reg": "MH/67321/2014",
+      "diagnosis": "Cervical Spondylosis",
+      "medicines": [
+        "Tab. Etoricoxib 60mg",
+        "Muscle Relaxant",
+        "Pain Relief Gel"
+      ],
+      "tests": [
+        "X-Ray Cervical Spine"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Orthopaedic Consultation",
+          "quantity": 1,
+          "rate": 1136,
+          "amount": 1136
+        },
+        {
+          "name": "X-Ray Cervical Spine",
+          "quantity": 1,
+          "rate": 847,
+          "amount": 847
+        },
+        {
+          "name": "Etoricoxib 60mg",
+          "quantity": 1,
+          "rate": 294,
+          "amount": 294
+        },
+        {
+          "name": "Muscle Relaxant",
+          "quantity": 1,
+          "rate": 186,
+          "amount": 186
+        },
+        {
+          "name": "Pain Relief Gel",
+          "quantity": 1,
+          "rate": 173,
+          "amount": 173
+        }
+      ],
+      "total_amount": 2636,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "APPROVED",
+    "case_id": "TC030"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC031",
+      "member_id": "EMP031",
+      "member_name": "Priya Shah",
+      "member_join_date": "2024-12-20",
+      "claim_amount": 4999,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-21"
+    },
+    "extracted": {
+      "patient_name": "Priya Shah",
+      "treatment_date": "2025-01-21",
+      "doctor_name": "Dr. Mehul Patel",
+      "doctor_reg": "GJ/45678/2018",
+      "diagnosis": "Dental Caries",
+      "medicines": [
+        "Tab. Amoxicillin 500mg",
+        "Tab. Ibuprofen 400mg"
+      ],
+      "tests": [
+        "Dental X-Ray"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Root Canal Treatment",
+          "quantity": 1,
+          "rate": 4356,
+          "amount": 4356
+        },
+        {
+          "name": "Dental X-Ray",
+          "quantity": 1,
+          "rate": 643,
+          "amount": 643
+        }
+      ],
+      "total_amount": 4999,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC031"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC032",
+      "member_id": "EMP032",
+      "member_name": "Mohit Das",
+      "member_join_date": "2024-12-22",
+      "claim_amount": 2696,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-23"
+    },
+    "extracted": {
+      "patient_name": "Mohit Das",
+      "treatment_date": "2025-01-23",
+      "doctor_name": "Dr. Rina Sen",
+      "doctor_reg": "WB/34567/2019",
+      "diagnosis": "Skin Infection",
+      "medicines": [
+        "Tab. Cetirizine",
+        "Topical Cream"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation",
+          "quantity": 1,
+          "rate": 1246,
+          "amount": 1246
+        },
+        {
+          "name": "Skin Infection Treatment",
+          "quantity": 1,
+          "rate": 987,
+          "amount": 987
+        },
+        {
+          "name": "Medicines",
+          "quantity": 1,
+          "rate": 463,
+          "amount": 463
+        }
+      ],
+      "total_amount": 2696,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC032"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC033",
+      "member_id": "EMP033",
+      "member_name": "Ananya Iyer",
+      "member_join_date": "2024-12-23",
+      "claim_amount": 2639,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-24"
+    },
+    "extracted": {
+      "patient_name": "Ananya Iyer",
+      "treatment_date": "2025-01-24",
+      "doctor_name": "Dr. Rajesh Nair",
+      "doctor_reg": "KL/23456/2015",
+      "diagnosis": "Lower Back Pain",
+      "medicines": [
+        "Tab. Aceclofenac"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation",
+          "quantity": 1,
+          "rate": 1128,
+          "amount": 1128
+        },
+        {
+          "name": "Physiotherapy Session",
+          "quantity": 1,
+          "rate": 1187,
+          "amount": 1187
+        },
+        {
+          "name": "Aceclofenac",
+          "quantity": 1,
+          "rate": 324,
+          "amount": 324
+        }
+      ],
+      "total_amount": 2639,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC033"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC034",
+      "member_id": "EMP034",
+      "member_name": "Divya Kapoor",
+      "member_join_date": "2024-12-26",
+      "claim_amount": 2330,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-27"
+    },
+    "extracted": {
+      "patient_name": "Divya Kapoor",
+      "treatment_date": "2025-01-27",
+      "doctor_name": "Dr. Vivek Bansal",
+      "doctor_reg": "DL/78901/2013",
+      "diagnosis": "Cardiology Evaluation",
+      "medicines": [
+        "Tab. Aspirin 75mg"
+      ],
+      "tests": [
+        "ECG",
+        "2D Echo"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Cardiology Consultation",
+          "quantity": 1,
+          "rate": 1487,
+          "amount": 1487
+        },
+        {
+          "name": "ECG",
+          "quantity": 1,
+          "rate": 843,
+          "amount": 843
+        }
+      ],
+      "total_amount": 2330,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC034"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC035",
+      "member_id": "EMP035",
+      "member_name": "Nitin Reddy",
+      "member_join_date": "2024-12-27",
+      "claim_amount": 3876,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-28"
+    },
+    "extracted": {
+      "patient_name": "Nitin Reddy",
+      "treatment_date": "2025-01-28",
+      "doctor_name": "Dr. Srinivas Rao",
+      "doctor_reg": "TS/34567/2016",
+      "diagnosis": "Knee Pain",
+      "medicines": [
+        "Tab. Etoricoxib 60mg"
+      ],
+      "tests": [
+        "X-Ray Knee"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Orthopaedic Consultation",
+          "quantity": 1,
+          "rate": 1124,
+          "amount": 1124
+        },
+        {
+          "name": "X-Ray Knee",
+          "quantity": 1,
+          "rate": 1387,
+          "amount": 1387
+        },
+        {
+          "name": "Etoricoxib 60mg",
+          "quantity": 1,
+          "rate": 1365,
+          "amount": 1365
+        }
+      ],
+      "total_amount": 3876,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC035"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC036",
+      "member_id": "EMP036",
+      "member_name": "Shweta Nair",
+      "member_join_date": "2024-12-29",
+      "claim_amount": 3623,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-30"
+    },
+    "extracted": {
+      "patient_name": "Shweta Nair",
+      "treatment_date": "2025-01-30",
+      "doctor_name": "Dr. Ajith Menon",
+      "doctor_reg": "KL/56789/2018",
+      "diagnosis": "Minor Surgical Follow-up",
+      "medicines": [
+        "Antibiotic Ointment"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation",
+          "quantity": 1,
+          "rate": 1186,
+          "amount": 1186
+        },
+        {
+          "name": "Dressing Procedure",
+          "quantity": 1,
+          "rate": 2437,
+          "amount": 2437
+        }
+      ],
+      "total_amount": 3623,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC036"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC037",
+      "member_id": "EMP037",
+      "member_name": "Kavya Menon",
+      "member_join_date": "2024-12-30",
+      "claim_amount": 2580,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-31"
+    },
+    "extracted": {
+      "patient_name": "Kavya Menon",
+      "treatment_date": "2025-01-31",
+      "doctor_name": "Dr. Arjun Pillai",
+      "doctor_reg": "KL/61234/2017",
+      "diagnosis": "Gingivitis",
+      "medicines": [
+        "Chlorhexidine Mouthwash"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Dental Consultation",
+          "quantity": 1,
+          "rate": 734,
+          "amount": 734
+        },
+        {
+          "name": "Dental Scaling",
+          "quantity": 1,
+          "rate": 1846,
+          "amount": 1846
+        }
+      ],
+      "total_amount": 2580,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC037"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC038",
+      "member_id": "EMP038",
+      "member_name": "Ravi Shankar",
+      "member_join_date": "2024-11-22",
+      "claim_amount": 1385,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-24"
+    },
+    "extracted": {
+      "patient_name": "Ravi Shankar",
+      "treatment_date": "2024-12-24",
+      "doctor_name": "Dr. Kiran Rao",
+      "doctor_reg": "KA/47891/2017",
+      "diagnosis": "Acute Gastritis",
+      "medicines": [
+        "Pantoprazole 40mg",
+        "Antacid Syrup"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation",
+          "quantity": 1,
+          "rate": 864,
+          "amount": 864
+        },
+        {
+          "name": "Pantoprazole",
+          "quantity": 1,
+          "rate": 287,
+          "amount": 287
+        },
+        {
+          "name": "Antacid Syrup",
+          "quantity": 1,
+          "rate": 234,
+          "amount": 234
+        }
+      ],
+      "total_amount": 1385,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": ["altered"],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC038"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC039",
+      "member_id": "EMP039",
+      "member_name": "Suresh Rao",
+      "member_join_date": "2024-11-24",
+      "claim_amount": 2997,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-26"
+    },
+    "extracted": {
+      "patient_name": "Suresh Rao",
+      "treatment_date": "2024-12-26",
+      "doctor_name": "Dr. Anita Sharma",
+      "doctor_reg": "MH/56321/2018",
+      "diagnosis": "General Consultation",
+      "medicines": [
+        "Multivitamin"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation",
+          "quantity": 1,
+          "rate": 999,
+          "amount": 999
+        },
+        {
+          "name": "Medicines",
+          "quantity": 1,
+          "rate": 999,
+          "amount": 999
+        },
+        {
+          "name": "Lab Charges",
+          "quantity": 1,
+          "rate": 999,
+          "amount": 999
+        }
+      ],
+      "total_amount": 2997,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "REJECTED",
+    "case_id": "TC039"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC040",
+      "member_id": "EMP040",
+      "member_name": "Neha Sharma",
+      "member_join_date": "2024-11-26",
+      "claim_amount": 1600,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-28"
+    },
+    "extracted": {
+      "patient_name": "Neha Sharma",
+      "treatment_date": "2024-12-28",
+      "doctor_name": "Dr. Farida Haidari",
+      "doctor_reg": "RJ/99123/2019",
+      "diagnosis": "Common Cold",
+      "medicines": [
+        "Ondansetron 8mg IV",
+        "Tramadol 100mg",
+        "Cetirizine 10mg"
+      ],
+      "tests": [],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation",
+          "quantity": 1,
+          "rate": 700,
+          "amount": 700
+        },
+        {
+          "name": "Ondansetron Injection",
+          "quantity": 1,
+          "rate": 400,
+          "amount": 400
+        },
+        {
+          "name": "Tramadol",
+          "quantity": 1,
+          "rate": 400,
+          "amount": 400
+        },
+        {
+          "name": "Cetirizine",
+          "quantity": 1,
+          "rate": 100,
+          "amount": 100
+        }
+      ],
+      "total_amount": 1600,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "MANUAL_REVIEW",
+    "case_id": "TC040"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC041",
+      "member_id": "EMP041",
+      "member_name": "Ajay Verma",
+      "member_join_date": "2024-11-28",
+      "claim_amount": 1400,
+      "ytd_claimed": 0,
+      "treatment_date": "2024-12-30"
+    },
+    "extracted": {
+      "patient_name": "Ajay Verma",
+      "treatment_date": "2024-12-30",
+      "doctor_name": "Dr. Rakesh Pillai",
+      "doctor_reg": "KL/67891/2016",
+      "diagnosis": "Viral Fever",
+      "medicines": [
+        "Paracetamol 650mg",
+        "ORS"
+      ],
+      "tests": [
+        "CBC"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Consultation",
+          "quantity": 1,
+          "rate": 600,
+          "amount": 600
+        },
+        {
+          "name": "CBC",
+          "quantity": 1,
+          "rate": 400,
+          "amount": 400
+        },
+        {
+          "name": "Paracetamol",
+          "quantity": 1,
+          "rate": 200,
+          "amount": 200
+        },
+        {
+          "name": "ORS",
+          "quantity": 1,
+          "rate": 200,
+          "amount": 200
+        }
+      ],
+      "total_amount": 1400,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "MANUAL_REVIEW",
+    "case_id": "TC041"
+  },
+  {
+    "claimData": {
+      "claim_id": "TC042",
+      "member_id": "EMP042",
+      "member_name": "Lakshmi Krishnan",
+      "member_join_date": "2024-11-30",
+      "claim_amount": 28647,
+      "ytd_claimed": 0,
+      "treatment_date": "2025-01-01",
+      "is_duplicate_claim": true
+    },
+    "extracted": {
+      "patient_name": "Lakshmi Krishnan",
+      "treatment_date": "30/11/2024",
+      "doctor_name": "Dr. Sandeep Menon",
+      "doctor_reg": "KL/45123/2012",
+      "diagnosis": "Breast Cancer Follow-up",
+      "medicines": [
+        "Targeted Therapy Injection"
+      ],
+      "tests": [
+        "PET Scan"
+      ],
+      "procedures": [],
+      "bill_items": [
+        {
+          "name": "Oncology Consultation",
+          "quantity": 1,
+          "rate": 2487,
+          "amount": 2487
+        },
+        {
+          "name": "PET Scan",
+          "quantity": 1,
+          "rate": 9876,
+          "amount": 9876
+        },
+        {
+          "name": "Targeted Therapy Injection",
+          "quantity": 1,
+          "rate": 16284,
+          "amount": 16284
+        }
+      ],
+      "total_amount": 28647,
+      "document_types": [
+        "prescription",
+        "bill"
+      ],
+      "is_prescription_present": true,
+      "is_bill_present": true,
+      "quality_issues": [],
+      "extraction_confidence": 0.95
+    },
+    "expected": "MANUAL_REVIEW",
+    "case_id": "TC042"
+  }
+]

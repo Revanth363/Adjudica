@@ -322,3 +322,70 @@
 .dc-actions__btn:hover {
   background: #5e35b1;
 }
+
+/* ─── Decision Notes ───────────────────────────────────────────────────────── */
+.dc-notes {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0px;
+  padding: 24px;
+}
+
+.dc-notes__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 10px 0;
+}
+
+.dc-notes__text {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Manual Review Resolution Banner ──────────────────────────────────────── */
+.dc-resolved-banner {
+  background: #f5f3ff;
+  border: 1.5px solid #ddd6fe;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dc-resolved-banner__icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.dc-resolved-banner__body {
+  flex: 1;
+}
+
+.dc-resolved-banner__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #5e35b1;
+  margin: 0 0 6px 0;
+}
+
+.dc-resolved-banner__text {
+  font-size: 13.5px;
+  color: #374151;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.dc-resolved-banner__notes {
+  font-size: 13px;
+  color: #4b5563;
+  margin: 10px 0 0 0;
+  padding: 8px 12px;
+  border-left: 3px solid #7e57c2;
+  background: #ffffff;
+  border-radius: 4px;
+  font-style: italic;
+}

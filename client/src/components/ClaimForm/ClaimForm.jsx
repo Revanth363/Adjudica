@@ -45,7 +45,6 @@ export default function ClaimForm() {
     if (!form.member_name.trim()) return "Member name is required.";
     if (!form.claim_amount || Number(form.claim_amount) <= 0)
       return "Enter a valid claim amount.";
-    if (!form.treatment_date)     return "Treatment date is required.";
     if (files.length === 0)
       return "Please upload at least one document (prescription or bill).";
     return null;

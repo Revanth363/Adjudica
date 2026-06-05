@@ -143,3 +143,30 @@
   text-align: right;
   margin: 8px 0 0 0;
 }
+
+.docupload__item-click-target {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+  min-width: 0;
+  width: 100%;
+  outline: none;
+}
+
+.docupload__item-click-target:hover .docupload__item-name {
+  color: #7e57c2;
+  text-decoration: underline;
+}
+
+.docupload__item-click-target:focus-visible {
+  outline: 2px solid #7e57c2;
+  outline-offset: 4px;
+  border-radius: 4px;
+}

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiTrash2 } from "react-icons/fi";
 import Loader from "../components/shared/Loader";
-import { getAllClaims } from "../services/api";
+import { getAllClaims, deleteClaim } from "../services/api";
 import "./AllClaims.css";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -35,6 +35,19 @@ export default function AllClaims() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filterText, setFilterText] = useState("");
+
+  const handleDelete = async (claimId) => {
+    if (!window.confirm(`Are you sure you want to delete claim ${claimId}?`)) {
+      return;
+    }
+    try {
+      await deleteClaim(claimId);
+      setClaims((prev) => prev.filter((c) => c.claim_id !== claimId));
+    } catch (err) {
+      console.error("Failed to delete claim:", err);
+      alert(err.response?.data?.error || "Failed to delete claim.");
+    }
+  };
 
   useEffect(() => {
     async function fetchClaims() {
@@ -150,33 +163,46 @@ export default function AllClaims() {
               </div>
             ) : (
               <ul className="all-list">
-                {filtered.map((c) => (
-                  <li
-                    key={c.claim_id}
-                    className="all-item"
-                    onClick={() => navigate(`/claims/${c.claim_id}`)}
-                  >
-                    <div className="all-item__left">
-                      <span className="all-item__id">{c.claim_id}</span>
-                      <span className="all-item__member">{c.member_name}</span>
-                    </div>
-                    <div className="all-item__right">
-                      <span className="all-item__amount">
-                        ₹ {Number(c.claim_amount).toLocaleString("en-IN")}
-                      </span>
-                      <span className="all-item__date">
-                        {new Date(c.createdAt).toLocaleDateString("en-IN", {
-                          day: "numeric",
-                          month: "short",
-                          year: "numeric",
-                        })}
-                      </span>
-                      <span className={badgeClass(c.decision)}>
-                        {badgeLabel(c.decision)}
-                      </span>
-                    </div>
-                  </li>
-                ))}
+                {filtered.map((c) => {
+                  const displayDecision = c.review_status === "RESOLVED" ? c.final_decision : c.decision;
+                  return (
+                    <li
+                      key={c.claim_id}
+                      className="all-item"
+                      onClick={() => navigate(`/claims/${c.claim_id}`)}
+                    >
+                      <div className="all-item__left">
+                        <span className="all-item__id">{c.claim_id}</span>
+                        <span className="all-item__member">{c.member_name}</span>
+                      </div>
+                      <div className="all-item__right">
+                        <span className="all-item__amount">
+                          ₹ {Number(c.claim_amount).toLocaleString("en-IN")}
+                        </span>
+                        <span className="all-item__date">
+                          {new Date(c.createdAt).toLocaleDateString("en-IN", {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                          })}
+                        </span>
+                        <span className={badgeClass(displayDecision)}>
+                          {badgeLabel(displayDecision)}
+                        </span>
+                        <button
+                          className="all-item__delete-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(c.claim_id);
+                          }}
+                          aria-label={`Delete claim ${c.claim_id}`}
+                        >
+                          <FiTrash2 />
+                        </button>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </>

@@ -148,11 +148,21 @@ export default function DocumentUpload({ files, onChange }) {
         <ul className="docupload__list">
           {files.map((file, i) => (
             <li key={`${file.name}-${i}`} className="docupload__item">
-              <span className="docupload__item-icon">{getFileIcon(file)}</span>
-              <div className="docupload__item-info">
-                <p className="docupload__item-name">{file.name}</p>
-                <p className="docupload__item-size">{formatSize(file.size)}</p>
-              </div>
+              <button
+                type="button"
+                className="docupload__item-click-target"
+                onClick={() => {
+                  const fileURL = URL.createObjectURL(file);
+                  window.open(fileURL, "_blank");
+                }}
+                aria-label={`Open ${file.name} in a new tab`}
+              >
+                <span className="docupload__item-icon">{getFileIcon(file)}</span>
+                <div className="docupload__item-info">
+                  <p className="docupload__item-name">{file.name}</p>
+                  <p className="docupload__item-size">{formatSize(file.size)}</p>
+                </div>
+              </button>
               <button
                 type="button"
                 className="docupload__item-remove"

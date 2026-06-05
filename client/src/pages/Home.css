@@ -76,8 +76,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    overflow-x: hidden;
-    /* prevent horizontal scroll */
+    overflow: visible;
 }
 
 .home-nav__brand {

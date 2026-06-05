@@ -5,6 +5,7 @@ const {
   submitClaim,
   getAllClaims,
   getClaimById,
+  deleteClaim,
 } = require("../controllers/claimController");
 
 // POST /api/claims — Submit a new claim (the full pipeline)
@@ -17,5 +18,8 @@ router.get("/", getAllClaims);
 
 // GET /api/claims/:id — Get a single claim by claim_id
 router.get("/:id", getClaimById);
+
+// DELETE /api/claims/:id — Delete a claim by claim_id
+router.delete("/:id", deleteClaim);
 
 module.exports = router;
