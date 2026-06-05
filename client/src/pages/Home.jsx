@@ -1,5 +1,7 @@
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiCpu, FiShield, FiAlertTriangle, FiZap } from "react-icons/fi";
+import { getAllClaims } from "../services/api";
 import "./Home.css";
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -42,37 +44,107 @@ const HOW_IT_WORKS = [
     { step: "05", title: "Decision Generated", desc: "Instant result with evidence" },
 ];
 
-const SAMPLE_CLAIMS = [
-    {
-        id: "CLM12345",
-        treatment: "Knee Pain Consultation",
-        amount: "₹ 5,200",
-        approved: "₹ 4,500",
-        decision: "APPROVED",
-        reason: null,
-        confidence: 94,
-    },
-    {
-        id: "CLM12346",
-        treatment: "Dental Cleaning",
-        amount: "₹ 2,800",
-        approved: null,
-        decision: "REJECTED",
-        reason: "Missing Prescription",
-        confidence: 78,
-    },
-    {
-        id: "CLM12347",
-        treatment: "MRI Scan",
-        amount: "₹ 15,600",
-        approved: null,
-        decision: "MANUAL_REVIEW",
-        reason: "High Claim Amount",
-        confidence: 65,
-    },
-];
-
 // ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function formatCurrency(amount) {
+    if (amount == null || Number.isNaN(Number(amount))) return null;
+    return `₹ ${Number(amount).toLocaleString("en-IN")}`;
+}
+
+/** API stores 0–1 (e.g. 0.94); some UIs use 0–100 — same rule as ConfidenceBar */
+function normalizeConfidence(score) {
+    if (score == null) return 0;
+    const pct = score > 1 ? score : score * 100;
+    return Math.round(pct);
+}
+
+function getDisplayDecision(claim) {
+    return claim.review_status === "RESOLVED" ? claim.final_decision : claim.decision;
+}
+
+function getTreatmentLabel(claim) {
+    const ex = claim.extracted;
+    return (
+        ex?.diagnosis ||
+        ex?.service_type ||
+        claim.hospital ||
+        claim.member_name ||
+        "OPD Claim"
+    );
+}
+
+function getRejectionReason(claim) {
+    const reasons = claim.rejection_reasons;
+    if (!reasons?.length) return null;
+    return reasons[0].replace(/_/g, " ");
+}
+
+function buildClaimTrend(claims, dayCount = 7) {
+    const buckets = [];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = dayCount - 1; i >= 0; i--) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        buckets.push({
+            key: d.toISOString().slice(0, 10),
+            count: 0,
+        });
+    }
+
+    claims.forEach((claim) => {
+        if (!claim.createdAt) return;
+        const created = new Date(claim.createdAt);
+        created.setHours(0, 0, 0, 0);
+        const key = created.toISOString().slice(0, 10);
+        const bucket = buckets.find((b) => b.key === key);
+        if (bucket) bucket.count += 1;
+    });
+
+    return buckets;
+}
+
+function trendToSvgPoints(buckets, width = 260, height = 60) {
+    const max = Math.max(...buckets.map((b) => b.count), 1);
+    const padTop = 10;
+    const padBottom = 55;
+    const step = buckets.length > 1 ? width / (buckets.length - 1) : 0;
+
+    return buckets
+        .map((b, i) => {
+            const x = buckets.length > 1 ? i * step : width / 2;
+            const y = padBottom - (b.count / max) * (padBottom - padTop);
+            return `${x},${y}`;
+        })
+        .join(" ");
+}
+
+function mapClaimToPreviewCard(claim) {
+    const decision = getDisplayDecision(claim);
+    const approvedAmount =
+        claim.review_status === "RESOLVED"
+            ? claim.final_approved_amount
+            : claim.approved_amount;
+
+    return {
+        id: claim.claim_id,
+        treatment: getTreatmentLabel(claim),
+        amount: formatCurrency(claim.claim_amount) || "—",
+        approved:
+            decision === "APPROVED" || decision === "PARTIAL"
+                ? formatCurrency(approvedAmount)
+                : null,
+        decision,
+        reason:
+            decision === "REJECTED"
+                ? getRejectionReason(claim)
+                : decision === "MANUAL_REVIEW"
+                  ? "Pending manual review"
+                  : null,
+        confidence: normalizeConfidence(claim.confidence_score),
+    };
+}
 
 function decisionClass(decision) {
     if (decision === "APPROVED") return "home-badge home-badge--approved";
@@ -91,10 +163,87 @@ function confidenceColor(score) {
     return "#DC2626";
 }
 
+function decisionStatusColor(decision) {
+    if (decision === "APPROVED") return "var(--green)";
+    if (decision === "REJECTED") return "var(--red)";
+    if (decision === "PARTIAL") return "var(--amber)";
+    return "var(--primary)";
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Home() {
     const navigate = useNavigate();
+    const [claims, setClaims] = useState([]);
+    const [claimsLoading, setClaimsLoading] = useState(true);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        async function loadClaims() {
+            setClaimsLoading(true);
+            try {
+                const { data } = await getAllClaims();
+                if (!cancelled) {
+                    setClaims(data.data || []);
+                }
+            } catch {
+                if (!cancelled) setClaims([]);
+            } finally {
+                if (!cancelled) setClaimsLoading(false);
+            }
+        }
+
+        loadClaims();
+        return () => {
+            cancelled = true;
+        };
+    }, []);
+
+    const sortedClaims = useMemo(
+        () =>
+            [...claims].sort(
+                (a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
+            ),
+        [claims]
+    );
+
+    const overview = useMemo(() => {
+        let approved = 0;
+        let rejected = 0;
+        let underReview = 0;
+
+        claims.forEach((claim) => {
+            const decision = getDisplayDecision(claim);
+            if (decision === "APPROVED" || decision === "PARTIAL") approved += 1;
+            else if (decision === "REJECTED") rejected += 1;
+            else if (decision === "MANUAL_REVIEW") underReview += 1;
+        });
+
+        return {
+            total: claims.length,
+            approved,
+            rejected,
+            underReview,
+        };
+    }, [claims]);
+
+    const trendBuckets = useMemo(() => buildClaimTrend(claims), [claims]);
+    const trendLinePoints = useMemo(() => trendToSvgPoints(trendBuckets), [trendBuckets]);
+    const trendAreaPoints = useMemo(
+        () => `${trendLinePoints} 260,60 0,60`,
+        [trendLinePoints]
+    );
+
+    const dashboardClaims = useMemo(
+        () => sortedClaims.slice(0, 3).map(mapClaimToPreviewCard),
+        [sortedClaims]
+    );
+
+    const latestClaim = sortedClaims[0];
+    const latestPreview = latestClaim ? mapClaimToPreviewCard(latestClaim) : null;
+
+    const formatCount = (n) => (claimsLoading ? "—" : n.toLocaleString("en-IN"));
 
     return (
         <div className="home-root">
@@ -166,28 +315,33 @@ export default function Home() {
                         <p className="home-preview-card__title">Claim Overview</p>
                         <div className="home-preview-card__stats">
                             <div>
-                                <p className="home-preview-stat__num">12,458</p>
+                                <p className="home-preview-stat__num">{formatCount(overview.total)}</p>
                                 <p className="home-preview-stat__label">Total Claims</p>
                             </div>
                             <div>
-                                <p className="home-preview-stat__num home-preview-stat__num--green">8,753</p>
+                                <p className="home-preview-stat__num home-preview-stat__num--green">
+                                    {formatCount(overview.approved)}
+                                </p>
                                 <p className="home-preview-stat__label">Approved</p>
                             </div>
                             <div>
-                                <p className="home-preview-stat__num home-preview-stat__num--red">2,194</p>
+                                <p className="home-preview-stat__num home-preview-stat__num--red">
+                                    {formatCount(overview.rejected)}
+                                </p>
                                 <p className="home-preview-stat__label">Rejected</p>
                             </div>
                             <div>
-                                <p className="home-preview-stat__num home-preview-stat__num--amber">1,511</p>
+                                <p className="home-preview-stat__num home-preview-stat__num--amber">
+                                    {formatCount(overview.underReview)}
+                                </p>
                                 <p className="home-preview-stat__label">Under Review</p>
                             </div>
                         </div>
-                        {/* Fake sparkline */}
                         <div className="home-preview-card__chart">
-                            <p className="home-preview-card__chart-label">Claim Trend</p>
-                            <svg viewBox="0 0 260 60" className="home-sparkline">
+                            <p className="home-preview-card__chart-label">Claim Trend (last 7 days)</p>
+                            <svg viewBox="0 0 260 60" className="home-sparkline" aria-hidden="true">
                                 <polyline
-                                    points="0,55 40,40 80,45 120,28 160,32 200,18 260,10"
+                                    points={trendLinePoints}
                                     fill="none"
                                     stroke="#7E57C2"
                                     strokeWidth="2.5"
@@ -195,12 +349,12 @@ export default function Home() {
                                     strokeLinecap="round"
                                 />
                                 <polyline
-                                    points="0,55 40,40 80,45 120,28 160,32 200,18 260,10 260,60 0,60"
-                                    fill="url(#sparkGrad)"
+                                    points={trendAreaPoints}
+                                    fill="url(#sparkGradHome)"
                                     opacity="0.15"
                                 />
                                 <defs>
-                                    <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <linearGradient id="sparkGradHome" x1="0" y1="0" x2="0" y2="1">
                                         <stop offset="0%" stopColor="#7E57C2" />
                                         <stop offset="100%" stopColor="#7E57C2" stopOpacity="0" />
                                     </linearGradient>
@@ -209,20 +363,48 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Floating decision badge */}
-                    <div className="home-preview-decision">
-                        <p className="home-preview-decision__label">Claim Decision</p>
-                        <p className="home-preview-decision__status">APPROVED</p>
-                        <p className="home-preview-decision__amount-label">Approved Amount</p>
-                        <p className="home-preview-decision__amount">₹ 4,500</p>
-                        <p className="home-preview-decision__conf-label">Confidence Score</p>
-                        <div className="home-preview-decision__conf-row">
-                            <strong>94%</strong>
-                            <div className="home-preview-decision__conf-bar">
-                                <div className="home-preview-decision__conf-fill" style={{ width: "94%" }} />
+                    {/* Floating decision badge — latest claim */}
+                    {latestPreview && (
+                        <div
+                            className="home-preview-decision home-preview-decision--clickable"
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => navigate(`/claims/${latestClaim.claim_id}`)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") navigate(`/claims/${latestClaim.claim_id}`);
+                            }}
+                        >
+                            <p className="home-preview-decision__label">Latest Claim</p>
+                            <p
+                                className="home-preview-decision__status"
+                                style={{ color: decisionStatusColor(latestPreview.decision) }}
+                            >
+                                {decisionLabel(latestPreview.decision)}
+                            </p>
+                            {(latestPreview.decision === "APPROVED" ||
+                                latestPreview.decision === "PARTIAL") &&
+                                latestPreview.approved && (
+                                    <>
+                                        <p className="home-preview-decision__amount-label">
+                                            Approved Amount
+                                        </p>
+                                        <p className="home-preview-decision__amount">
+                                            {latestPreview.approved}
+                                        </p>
+                                    </>
+                                )}
+                            <p className="home-preview-decision__conf-label">Confidence Score</p>
+                            <div className="home-preview-decision__conf-row">
+                                <strong>{latestPreview.confidence}%</strong>
+                                <div className="home-preview-decision__conf-bar">
+                                    <div
+                                        className="home-preview-decision__conf-fill"
+                                        style={{ width: `${latestPreview.confidence}%` }}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </section>
 
@@ -268,9 +450,26 @@ export default function Home() {
             {/* ── Live Dashboard Preview ─────────────────────────────────────────── */}
             <section className="home-section" id="dashboard">
                 <h2 className="home-section__heading">Live Dashboard Preview</h2>
+                {claimsLoading && (
+                    <p className="home-dashboard-hint">Loading claims from database…</p>
+                )}
+                {!claimsLoading && dashboardClaims.length === 0 && (
+                    <p className="home-dashboard-hint">
+                        No claims yet. Submit a claim to see live results here.
+                    </p>
+                )}
                 <div className="home-claims-grid">
-                    {SAMPLE_CLAIMS.map((c) => (
-                        <div className="home-claim-card" key={c.id}>
+                    {dashboardClaims.map((c) => (
+                        <div
+                            className="home-claim-card home-claim-card--clickable"
+                            key={c.id}
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => navigate(`/claims/${c.id}`)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") navigate(`/claims/${c.id}`);
+                            }}
+                        >
                             <div className="home-claim-card__header">
                                 <span className="home-claim-card__id">{c.id}</span>
                                 <span className={decisionClass(c.decision)}>

@@ -306,6 +306,16 @@
     min-width: 200px;
 }
 
+.home-preview-decision--clickable {
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.home-preview-decision--clickable:hover {
+    box-shadow: 0 10px 36px rgba(126, 87, 194, 0.22);
+    transform: translateY(-1px);
+}
+
 .home-preview-decision__label {
     font-size: 11px;
     color: var(--muted);
@@ -530,6 +540,17 @@
 
 .home-claim-card:hover {
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.home-claim-card--clickable {
+    cursor: pointer;
+}
+
+.home-dashboard-hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 24px 0;
 }
 
 .home-claim-card__header {
