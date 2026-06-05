@@ -3,8 +3,46 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { FiArrowLeft, FiX } from "react-icons/fi";
 import DecisionCard from "../components/DecisionCard/DecisionCard";
 import Loader from "../components/shared/Loader";
-import { getClaimById } from "../services/api";
+import { getClaimById, getClaimDocumentBlob } from "../services/api";
 import "./ClaimStatus.css";
+
+function getFileIcon(filename) {
+  const name = (filename || "").toLowerCase();
+  if (name.endsWith(".pdf")) return "📄";
+  if (/\.(jpe?g|png|webp|gif)$/.test(name)) return "🖼️";
+  return "📎";
+}
+
+function SubmittedDocuments({ files, onOpen }) {
+  if (!files?.length) return null;
+
+  return (
+    <div className="cs-medical__section">
+      <h4 className="cs-medical__section-title">Submitted Documents</h4>
+      <ul className="cs-documents__list">
+        {files.map((file, idx) => (
+          <li key={`${file.url || file.filename}-${idx}`} className="cs-documents__item">
+            <button
+              type="button"
+              className="cs-documents__item-target"
+              onClick={() => onOpen(idx, file.url)}
+              aria-label={`Open ${file.filename || `Document ${idx + 1}`} in a new tab`}
+            >
+              <span className="cs-documents__item-icon">
+                {getFileIcon(file.filename)}
+              </span>
+              <div className="cs-documents__item-info">
+                <p className="cs-documents__item-name">
+                  {file.filename || `Document ${idx + 1}`}
+                </p>
+              </div>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 // ─── ClaimStatus ──────────────────────────────────────────────────────────────
 // Two entry points:
@@ -55,16 +93,32 @@ export default function ClaimStatus() {
     navigate(`/claims/${trimmed}`);
   }
 
-  const handleViewDocument = async (filename, url) => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Network response was not ok");
-      const blob = await response.blob();
+  const handleViewDocument = async (index, fallbackUrl) => {
+    const openBlob = (blob) => {
       const blobUrl = URL.createObjectURL(blob);
       window.open(blobUrl, "_blank");
-    } catch (error) {
-      console.warn("CORS/Fetch issue, falling back to direct URL opening:", error);
-      window.open(url, "_blank");
+    };
+
+    if (id) {
+      try {
+        const { data } = await getClaimDocumentBlob(id, index);
+        openBlob(data);
+        return;
+      } catch (error) {
+        console.warn("Document proxy failed, trying direct fetch:", error);
+      }
+    }
+
+    if (fallbackUrl) {
+      try {
+        const response = await fetch(fallbackUrl);
+        if (!response.ok) throw new Error("Network response was not ok");
+        openBlob(await response.blob());
+        return;
+      } catch (error) {
+        console.warn("Direct fetch failed, opening URL:", error);
+        window.open(fallbackUrl, "_blank");
+      }
     }
   };
 
@@ -301,29 +355,10 @@ export default function ClaimStatus() {
                         </div>
                       )}
 
-                      {decision.files && decision.files.length > 0 && (
-                        <div className="cs-medical__section">
-                          <h4 className="cs-medical__section-title">Submitted Documents</h4>
-                          <div className="cs-medical__files">
-                            {decision.files.map((file, idx) => (
-                              <button
-                                key={idx}
-                                type="button"
-                                className="cs-medical__file-btn"
-                                onClick={() => handleViewDocument(file.filename, file.url)}
-                                aria-label={`Open ${file.filename || `Document ${idx + 1}`} in a new tab`}
-                              >
-                                <span className="cs-medical__file-icon">
-                                  {file.filename?.toLowerCase().endsWith(".pdf") ? "📄" : "🖼️"}
-                                </span>
-                                <span className="cs-medical__file-name">
-                                  {file.filename || `Document ${idx + 1}`}
-                                </span>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                      <SubmittedDocuments
+                        files={decision.files}
+                        onOpen={handleViewDocument}
+                      />
                     </div>
                   </div>
                 </div>
@@ -331,6 +366,12 @@ export default function ClaimStatus() {
             ) : (
               <div className="cs-single-col">
                 <DecisionCard decision={decision} onResubmit={null} />
+                <div className="cs-documents-panel">
+                  <SubmittedDocuments
+                    files={decision.files}
+                    onOpen={handleViewDocument}
+                  />
+                </div>
               </div>
             )}
 

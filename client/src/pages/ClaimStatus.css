@@ -612,50 +612,77 @@
     }
 }
 
-.cs-medical__files {
+/* Submitted documents — same click-to-preview pattern as DocumentUpload */
+.cs-documents-panel {
+    margin-top: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.cs-documents__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.cs-medical__file-btn {
+.cs-documents__item {
     display: flex;
     align-items: center;
-    gap: 10px;
     background: #f9fafb;
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 8px 12px;
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+
+.cs-documents__item-target {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
     text-align: left;
     cursor: pointer;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 500;
-    color: #374151;
-    transition: all 0.15s ease;
+    min-width: 0;
     width: 100%;
     outline: none;
+    font-family: inherit;
 }
 
-.cs-medical__file-btn:hover {
-    background: #f5f3ff;
-    border-color: #7e57c2;
+.cs-documents__item-target:hover .cs-documents__item-name {
     color: #7e57c2;
+    text-decoration: underline;
 }
 
-.cs-medical__file-btn:focus-visible {
+.cs-documents__item-target:focus-visible {
     outline: 2px solid #7e57c2;
-    outline-offset: 2px;
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
-.cs-medical__file-icon {
-    font-size: 16px;
+.cs-documents__item-icon {
+    font-size: 20px;
     flex-shrink: 0;
 }
 
-.cs-medical__file-name {
+.cs-documents__item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cs-documents__item-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex: 1;
 }

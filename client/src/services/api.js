@@ -19,6 +19,10 @@ export const submitClaim = (formData) =>
 // Get a single claim by ID
 export const getClaimById = (claimId) => API.get(`/claims/${claimId}`);
 
+// Fetch a submitted document as blob (same-origin proxy; opens in new tab client-side)
+export const getClaimDocumentBlob = (claimId, index) =>
+  API.get(`/claims/${claimId}/documents/${index}`, { responseType: "blob" });
+
 // Get all claims (with optional filters)
 export const getAllClaims = (params = {}) => API.get("/claims", { params });
 

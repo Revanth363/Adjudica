@@ -675,6 +675,7 @@
     height: 56px;
     flex-shrink: 0;
     overflow: visible;
+    margin-left: 16px;
 }
 
 .home-footer__shield {

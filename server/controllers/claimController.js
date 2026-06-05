@@ -277,4 +277,62 @@ const deleteClaim = async (req, res) => {
   }
 };
 
-module.exports = { submitClaim, getAllClaims, getClaimById, deleteClaim };
+// ─── GET /api/claims/:id/documents/:index ────────────────────────────────────
+// Proxies a stored document so the client can open it as a blob (avoids CORS).
+
+const getClaimDocument = async (req, res) => {
+  try {
+    const claim = await Claim.findOne({ claim_id: req.params.id }).lean();
+    if (!claim) {
+      return res.status(404).json({
+        success: false,
+        message: `Claim ${req.params.id} not found.`,
+      });
+    }
+
+    const index = Number.parseInt(req.params.index, 10);
+    const file = claim.files?.[index];
+    if (!file?.url) {
+      return res.status(404).json({
+        success: false,
+        message: "Document not found.",
+      });
+    }
+
+    const upstream = await fetch(file.url);
+    if (!upstream.ok) {
+      return res.status(502).json({
+        success: false,
+        message: "Failed to fetch document from storage.",
+      });
+    }
+
+    const buffer = Buffer.from(await upstream.arrayBuffer());
+    const contentType =
+      upstream.headers.get("content-type") ||
+      (file.filename?.toLowerCase().endsWith(".pdf")
+        ? "application/pdf"
+        : "application/octet-stream");
+
+    res.setHeader("Content-Type", contentType);
+    res.setHeader(
+      "Content-Disposition",
+      `inline; filename="${encodeURIComponent(file.filename || `document-${index + 1}`)}"`
+    );
+    return res.send(buffer);
+  } catch (error) {
+    console.error("[getClaimDocument] Error:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = {
+  submitClaim,
+  getAllClaims,
+  getClaimById,
+  deleteClaim,
+  getClaimDocument,
+};
