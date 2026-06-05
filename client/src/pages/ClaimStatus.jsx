@@ -181,161 +181,161 @@ export default function ClaimStatus() {
                       </button>
                     </div>
                     <div className="cs-medical">
-                    <h3 className="cs-medical__title">Medical & Extraction Insights</h3>
-                    <p className="cs-medical__subtitle">
-                      Clinical data extracted from submitted documents.
-                    </p>
+                      <h3 className="cs-medical__title">Medical & Extraction Insights</h3>
+                      <p className="cs-medical__subtitle">
+                        Clinical data extracted from submitted documents.
+                      </p>
 
-                    <div className="cs-medical__section">
-                      <h4 className="cs-medical__section-title">Patient & Treatment</h4>
-                      <div className="cs-medical__grid">
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Patient Name</span>
-                          <span className="cs-medical__value">
-                            {decision.extracted.patient_name || decision.member_name || "—"}
-                          </span>
-                        </div>
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Patient Age</span>
-                          <span className="cs-medical__value">
-                            {decision.extracted.patient_age ? `${decision.extracted.patient_age} years` : "—"}
-                          </span>
-                        </div>
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Treatment Date</span>
-                          <span className="cs-medical__value">
-                            {decision.extracted.treatment_date
-                              ? new Date(decision.extracted.treatment_date).toLocaleDateString("en-IN", {
+                      <div className="cs-medical__section">
+                        <h4 className="cs-medical__section-title">Patient & Treatment</h4>
+                        <div className="cs-medical__grid">
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Patient Name</span>
+                            <span className="cs-medical__value">
+                              {decision.extracted.patient_name || decision.member_name || "—"}
+                            </span>
+                          </div>
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Patient Age</span>
+                            <span className="cs-medical__value">
+                              {decision.extracted.patient_age ? `${decision.extracted.patient_age} years` : "—"}
+                            </span>
+                          </div>
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Treatment Date</span>
+                            <span className="cs-medical__value">
+                              {decision.extracted.treatment_date
+                                ? new Date(decision.extracted.treatment_date).toLocaleDateString("en-IN", {
                                   day: "numeric",
                                   month: "short",
                                   year: "numeric",
                                 })
-                              : "—"}
-                          </span>
-                        </div>
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Treatment Type</span>
-                          <span className="cs-medical__value cs-medical__value--type">
-                            {decision.extracted.service_type || "—"}
-                          </span>
+                                : "—"}
+                            </span>
+                          </div>
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Treatment Type</span>
+                            <span className="cs-medical__value cs-medical__value--type">
+                              {decision.extracted.service_type || "—"}
+                            </span>
+                          </div>
                         </div>
                       </div>
+
+                      <div className="cs-medical__section">
+                        <h4 className="cs-medical__section-title">Diagnosis & Medical Provider</h4>
+                        <div className="cs-medical__grid">
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Diagnosis</span>
+                            <span className="cs-medical__value cs-medical__value--diagnosis">
+                              {decision.extracted.diagnosis || "—"}
+                            </span>
+                          </div>
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Doctor Name</span>
+                            <span className="cs-medical__value">{decision.extracted.doctor_name || "—"}</span>
+                          </div>
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Doctor Reg. No</span>
+                            <span className="cs-medical__value cs-medical__value--mono">
+                              {decision.extracted.doctor_registration_number || "—"}
+                            </span>
+                          </div>
+                          <div className="cs-medical__item">
+                            <span className="cs-medical__label">Facility Name</span>
+                            <span className="cs-medical__value">
+                              {decision.extracted.clinic_name || decision.extracted.hospital_name || decision.hospital || "—"}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {decision.extracted.medicines && decision.extracted.medicines.length > 0 && (
+                        <div className="cs-medical__section">
+                          <h4 className="cs-medical__section-title">Prescribed Medicines</h4>
+                          <ul className="cs-medical__list">
+                            {decision.extracted.medicines.map((med, idx) => (
+                              <li key={idx} className="cs-medical__list-item">
+                                <span className="cs-medical__bullet">💊</span>
+                                <span className="cs-medical__list-text">{med}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {((decision.extracted.tests && decision.extracted.tests.length > 0) ||
+                        (decision.extracted.procedures && decision.extracted.procedures.length > 0)) && (
+                          <div className="cs-medical__section">
+                            <h4 className="cs-medical__section-title">Diagnostics & Procedures</h4>
+                            <ul className="cs-medical__list">
+                              {decision.extracted.tests?.map((test, idx) => (
+                                <li key={`test-${idx}`} className="cs-medical__list-item">
+                                  <span className="cs-medical__bullet">🔬</span>
+                                  <span className="cs-medical__list-text">{test}</span>
+                                </li>
+                              ))}
+                              {decision.extracted.procedures?.map((proc, idx) => (
+                                <li key={`proc-${idx}`} className="cs-medical__list-item">
+                                  <span className="cs-medical__bullet">🩺</span>
+                                  <span className="cs-medical__list-text">{proc}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                      {decision.extracted.bill_items && decision.extracted.bill_items.length > 0 && (
+                        <div className="cs-medical__section">
+                          <h4 className="cs-medical__section-title">Invoice Itemization</h4>
+                          <div className="cs-medical__bills">
+                            {decision.extracted.bill_items.map((item, idx) => (
+                              <div key={idx} className="cs-medical__bill-row">
+                                <span className="cs-medical__bill-name">{item.name}</span>
+                                <span className="cs-medical__bill-amount">
+                                  ₹{Number(item.amount).toLocaleString("en-IN")}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {decision.files && decision.files.length > 0 && (
+                        <div className="cs-medical__section">
+                          <h4 className="cs-medical__section-title">Submitted Documents</h4>
+                          <div className="cs-medical__files">
+                            {decision.files.map((file, idx) => (
+                              <button
+                                key={idx}
+                                type="button"
+                                className="cs-medical__file-btn"
+                                onClick={() => handleViewDocument(file.filename, file.url)}
+                                aria-label={`Open ${file.filename || `Document ${idx + 1}`} in a new tab`}
+                              >
+                                <span className="cs-medical__file-icon">
+                                  {file.filename?.toLowerCase().endsWith(".pdf") ? "📄" : "🖼️"}
+                                </span>
+                                <span className="cs-medical__file-name">
+                                  {file.filename || `Document ${idx + 1}`}
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
-
-                    <div className="cs-medical__section">
-                      <h4 className="cs-medical__section-title">Diagnosis & Medical Provider</h4>
-                      <div className="cs-medical__grid">
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Diagnosis</span>
-                          <span className="cs-medical__value cs-medical__value--diagnosis">
-                            {decision.extracted.diagnosis || "—"}
-                          </span>
-                        </div>
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Doctor Name</span>
-                          <span className="cs-medical__value">{decision.extracted.doctor_name || "—"}</span>
-                        </div>
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Doctor Reg. No</span>
-                          <span className="cs-medical__value cs-medical__value--mono">
-                            {decision.extracted.doctor_registration_number || "—"}
-                          </span>
-                        </div>
-                        <div className="cs-medical__item">
-                          <span className="cs-medical__label">Facility Name</span>
-                          <span className="cs-medical__value">
-                            {decision.extracted.clinic_name || decision.extracted.hospital_name || decision.hospital || "—"}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {decision.extracted.medicines && decision.extracted.medicines.length > 0 && (
-                      <div className="cs-medical__section">
-                        <h4 className="cs-medical__section-title">Prescribed Medicines</h4>
-                        <ul className="cs-medical__list">
-                          {decision.extracted.medicines.map((med, idx) => (
-                            <li key={idx} className="cs-medical__list-item">
-                              <span className="cs-medical__bullet">💊</span>
-                              <span className="cs-medical__list-text">{med}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {((decision.extracted.tests && decision.extracted.tests.length > 0) ||
-                      (decision.extracted.procedures && decision.extracted.procedures.length > 0)) && (
-                      <div className="cs-medical__section">
-                        <h4 className="cs-medical__section-title">Diagnostics & Procedures</h4>
-                        <ul className="cs-medical__list">
-                          {decision.extracted.tests?.map((test, idx) => (
-                            <li key={`test-${idx}`} className="cs-medical__list-item">
-                              <span className="cs-medical__bullet">🔬</span>
-                              <span className="cs-medical__list-text">{test}</span>
-                            </li>
-                          ))}
-                          {decision.extracted.procedures?.map((proc, idx) => (
-                            <li key={`proc-${idx}`} className="cs-medical__list-item">
-                              <span className="cs-medical__bullet">🩺</span>
-                              <span className="cs-medical__list-text">{proc}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {decision.extracted.bill_items && decision.extracted.bill_items.length > 0 && (
-                      <div className="cs-medical__section">
-                        <h4 className="cs-medical__section-title">Invoice Itemization</h4>
-                        <div className="cs-medical__bills">
-                          {decision.extracted.bill_items.map((item, idx) => (
-                            <div key={idx} className="cs-medical__bill-row">
-                              <span className="cs-medical__bill-name">{item.name}</span>
-                              <span className="cs-medical__bill-amount">
-                                ₹{Number(item.amount).toLocaleString("en-IN")}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {decision.files && decision.files.length > 0 && (
-                      <div className="cs-medical__section">
-                        <h4 className="cs-medical__section-title">Submitted Documents</h4>
-                        <div className="cs-medical__files">
-                          {decision.files.map((file, idx) => (
-                            <button
-                              key={idx}
-                              type="button"
-                              className="cs-medical__file-btn"
-                              onClick={() => handleViewDocument(file.filename, file.url)}
-                              aria-label={`Open ${file.filename || `Document ${idx + 1}`} in a new tab`}
-                            >
-                              <span className="cs-medical__file-icon">
-                                {file.filename?.toLowerCase().endsWith(".pdf") ? "📄" : "🖼️"}
-                              </span>
-                              <span className="cs-medical__file-name">
-                                {file.filename || `Document ${idx + 1}`}
-                              </span>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
+              </>
+            ) : (
+              <div className="cs-single-col">
+                <DecisionCard decision={decision} onResubmit={null} />
               </div>
-            </>
-          ) : (
-            <div className="cs-single-col">
-              <DecisionCard decision={decision} onResubmit={null} />
-            </div>
-          )}
+            )}
 
             <div className="cs-actions-bar">
-              
+
             </div>
           </div>
         )}
