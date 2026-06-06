@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FiCpu, FiShield, FiAlertTriangle, FiZap } from "react-icons/fi";
 import { getAllClaims } from "../services/api";
 import "./Home.css";
@@ -263,7 +264,9 @@ export default function Home() {
                     <ul className="home-nav__links">
                         <li><a href="#features">Features</a></li>
                         <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="/policy-dashboard">Dashboard</a></li>
+                        <li>
+  <Link to="/policy-dashboard">Dashboard</Link>
+</li>
                     </ul>
                     <button className="home-btn home-btn--outline" onClick={() => navigate("/all-claims")}>All Claims</button>
                     <button
@@ -544,7 +547,9 @@ export default function Home() {
                         <ul>
                             <li><a href="#features">Features</a></li>
                             <li><a href="#how-it-works">How It Works</a></li>
-                            <li><a href="/policy-dashboard">Dashboard</a></li>
+                            <li>
+  <Link to="/policy-dashboard">Dashboard</Link>
+</li>
                         </ul>
                     </div>
 
