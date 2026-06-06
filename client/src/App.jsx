@@ -4,6 +4,8 @@ import ClaimForm from "./components/ClaimForm/ClaimForm";
 import ManualReview from "./pages/ManualReview";
 import AllClaims from "./pages/AllClaims";
 import ClaimStatus from "./pages/ClaimStatus";
+import PolicyDashboard from "./pages/PolicyDashboard";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -13,6 +15,7 @@ export default function App() {
         <Route path="/claims" element={<ManualReview />} />
         <Route path="/all-claims" element={<AllClaims />} />
         <Route path="/claims/:id" element={<ClaimStatus />} />
+        <Route path="/policy-dashboard" element={<PolicyDashboard />} />
       </Routes>
     </BrowserRouter>
   );

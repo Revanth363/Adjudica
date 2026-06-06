@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 const { notFound, errorHandler } = require("./middleware/errorHandler");
 const claimRoutes = require("./routes/claimRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
+const policyRoutes = require("./routes/policyRoutes"); // Import policy routes
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(express.json());
 // ── Routes ─────────────────────────────────────────────────────────────────
 app.use("/api/claims", claimRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/policy", policyRoutes); // Use policy routes
 
 app.get("/", (req, res) => {
   res.send("Claim Adjudication API Running");

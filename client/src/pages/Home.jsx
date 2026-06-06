@@ -263,7 +263,7 @@ export default function Home() {
                     <ul className="home-nav__links">
                         <li><a href="#features">Features</a></li>
                         <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="/policy-dashboard">Dashboard</a></li>
                     </ul>
                     <button className="home-btn home-btn--outline" onClick={() => navigate("/all-claims")}>All Claims</button>
                     <button
@@ -449,7 +449,7 @@ export default function Home() {
 
             {/* ── Live Dashboard Preview ─────────────────────────────────────────── */}
             <section className="home-section" id="dashboard">
-                <h2 className="home-section__heading">Live Dashboard Preview</h2>
+                <h2 className="home-section__heading">Live Claims Preview</h2>
                 {claimsLoading && (
                     <p className="home-dashboard-hint">Loading claims from database…</p>
                 )}
@@ -544,7 +544,7 @@ export default function Home() {
                         <ul>
                             <li><a href="#features">Features</a></li>
                             <li><a href="#how-it-works">How It Works</a></li>
-                            <li><a href="#dashboard">Dashboard</a></li>
+                            <li><a href="/policy-dashboard">Dashboard</a></li>
                         </ul>
                     </div>
 
